@@ -1,29 +1,22 @@
 {
-	"name": "dj-website-dockerfile",
-	"image": "mcr.microsoft.com/devcontainers/base:jammy",
-	"features": {
-		"ghcr.io/devcontainers/features/node:1": {}
-	},
-	"forwardPorts": [
-		3000
-	],
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"streetsidesoftware.code-spell-checker",
-			],
-			"settings": {
-				"editor.formatOnSave": true,
-				"editor.wordWrap": "on",
-				"editor.wordWrapColumn": 120,
-				"editor.rulers": [
-					120
-				]
-			}
-		}
-	},
-	"mounts": [
-		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
-	],
-    "postCreateCommand": "npm install -g npm@11.4.1 && npm install -g serve && npm install"
+  "name": "dj-website-dockerfile",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "forwardPorts": [3000],
+  "customizations": {
+    "vscode": {
+      "extensions": ["streetsidesoftware.code-spell-checker"],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.wordWrap": "on",
+        "editor.wordWrapColumn": 120,
+        "editor.rulers": [120],
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"],
+  "postCreateCommand": "npm install -g npm@11.4.1 && npm install -g serve && npm install"
 }
