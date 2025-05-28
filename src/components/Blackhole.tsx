@@ -6,20 +6,31 @@ Source: https://sketchfab.com/3d-models/blackhole-74cbeaeae2174a218fe9455d77902b
 Title: Blackhole
 */
 
-import { useRef, type JSX } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useEffect, useRef, type JSX } from "react";
+import { useAnimations, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Blackhole = (props: JSX.IntrinsicElements["group"]) => {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials, animations } = useGLTF("/models/blackhole.glb");
+  const { actions, mixer } = useAnimations(animations, group);
+  useEffect(() => {
+    // Play a specific animation by name
+    const animation = actions["Take 001"];
+    if (animation) {
+      animation.reset().play();
+    }
+  }, [actions]);
+
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group {...props} dispose={null}>
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={0.016}>
           <group name="415c209837844e7b91255101a7c3eb67fbx" rotation={[Math.PI / 2, 0, 0]}>
             <group name="Object_2">
-              <group name="RootNode">
+              <group ref={group} name="RootNode">
                 <group name="Blackhole_core" rotation={[-Math.PI / 2, 0, 0]} scale={0.968}>
                   <mesh
                     name="Blackhole_core_Blackhole_core_0"
