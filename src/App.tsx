@@ -11,6 +11,7 @@ function App() {
           <meshStandardMaterial />
         </mesh>
       </Canvas>
+      <h1 className="text-2xl text-white underline">Hello, and welcome to the best website...in the world!</h1>
     </div>
   );
 }
