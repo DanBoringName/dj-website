@@ -3,8 +3,14 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import Blackhole from "../components/Blackhole";
 import CanvasLoader from "../components/CanvasLoader";
+import { useMediaQuery } from "react-responsive";
+import { calculateSizes } from "../constants";
 
 const Hero = () => {
+  const isSmall = useMediaQuery({ maxWidth: 440 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const sizes = calculateSizes(isSmall, isMobile, isTablet);
   return (
     <section className="min-h-screen w-full flex flex-col relative">
       <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
@@ -16,11 +22,7 @@ const Hero = () => {
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 30]} />
-              <Blackhole scale={5} position={[0, 0, 0]} rotation={[Math.PI / 8, 0, 0]} />{" "}
-              {
-                // `-Math.PI / 2` to rotate 90deg
-                // clockwise
-              }
+              <Blackhole scale={sizes.blackholeScale} rotation={[0, -0.66, -0.4]} position={sizes.blackholePosition} />
               <ambientLight intensity={1} />
               <directionalLight position={[10, 10, 10]} intensity={0.5} />
             </Suspense>

@@ -19,6 +19,7 @@
     "git-filter-repo": "^0.0.30",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-responsive": "^10.0.1",
     "tailwindcss": "^4.1.7",
     "three": "^0.176.0"
   },
@@ -34,6 +35,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.2.0",
+    "leva": "^0.10.0",
     "prettier": "^3.5.3",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.32.1",
