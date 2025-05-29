@@ -3,7 +3,7 @@ import { easing } from "maath";
 import { useRef } from "react";
 import * as THREE from "three";
 
-const HeroCamera = ({ children, isMobile }) => {
+const HeroCamera = ({ children, isMobile }: { children: any; isMobile: any }) => {
   const groupRef = useRef<THREE.Group>(null);
   useFrame((state, delta) => {
     easing.damp3(state.camera.position, [0, 0, 30], 0.25, delta);

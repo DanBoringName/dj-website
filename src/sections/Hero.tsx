@@ -24,7 +24,7 @@ const Hero = () => {
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 30]} />
-              <HeroCamera isMobile={isMobile} isTablet={isTablet}>
+              <HeroCamera isMobile={isMobile}>
                 <Blackhole
                   scale={sizes.blackholeScale}
                   rotation={[0, -0.66, -0.4]}
