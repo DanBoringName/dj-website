@@ -5,6 +5,8 @@ import Blackhole from "../components/Blackhole";
 import CanvasLoader from "../components/CanvasLoader";
 import { useMediaQuery } from "react-responsive";
 import { calculateSizes } from "../constants";
+import HeroCamera from "../components/HeroCamera";
+import Button from "../components/Button";
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 });
@@ -22,11 +24,22 @@ const Hero = () => {
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 30]} />
-              <Blackhole scale={sizes.blackholeScale} rotation={[0, -0.66, -0.4]} position={sizes.blackholePosition} />
+              <HeroCamera isMobile={isMobile} isTablet={isTablet}>
+                <Blackhole
+                  scale={sizes.blackholeScale}
+                  rotation={[0, -0.66, -0.4]}
+                  position={sizes.blackholePosition}
+                />
+              </HeroCamera>
               <ambientLight intensity={1} />
               <directionalLight position={[10, 10, 10]} intensity={0.5} />
             </Suspense>
           </Canvas>
+        </div>
+        <div className="absolute bottom-7 left-0 right-0 w-full z-10 c-space">
+          <a href="#contact" className="w-fit">
+            <Button name="Click Me" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
+          </a>
         </div>
       </div>
     </section>
