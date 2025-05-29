@@ -5,7 +5,6 @@ import Blackhole from "../components/Blackhole";
 import CanvasLoader from "../components/CanvasLoader";
 import { useMediaQuery } from "react-responsive";
 import { calculateSizes } from "../constants";
-import Target from "../components/Target";
 
 const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 440 });
@@ -24,7 +23,6 @@ const Hero = () => {
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 30]} />
               <Blackhole scale={sizes.blackholeScale} rotation={[0, -0.66, -0.4]} position={sizes.blackholePosition} />
-              <group>{/* <Target position={sizes.targetPosition} /> */}</group>
               <ambientLight intensity={1} />
               <directionalLight position={[10, 10, 10]} intensity={0.5} />
             </Suspense>

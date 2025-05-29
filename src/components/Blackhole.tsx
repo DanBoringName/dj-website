@@ -9,13 +9,11 @@ Title: Blackhole
 import { useEffect, useRef, type JSX } from "react";
 import { useAnimations, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 const Blackhole = (props: JSX.IntrinsicElements["group"]) => {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials, animations } = useGLTF("/models/blackhole.glb");
-  const { actions, mixer } = useAnimations(animations, group);
+  const { actions } = useAnimations(animations, group);
   useEffect(() => {
     // Play a specific animation by name
     const animation = actions["Take 001"];
