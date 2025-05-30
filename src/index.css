@@ -1,4 +1,4 @@
-@import url("https://fonts.cdnfonts.com/css/general-sans");
+@import url("//fonts.cdnfonts.com/css/general-sans");
 @import "tailwindcss";
 
 @tailwind utilities;
@@ -42,7 +42,7 @@ body {
 
 /* button component */
 @utility btn {
-  @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-gray-300  transition-all active:scale-95 text-white mx-auto;
+  @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-slate-900 transition-all active:scale-95 text-white mx-auto;
 }
 
 @utility btn-ping {
@@ -60,7 +60,7 @@ body {
 
 /* about section */
 @utility grid-container {
-  @apply w-full h-full border border-gray-300 bg-black rounded-lg sm:p-7 p-4 flex flex-col gap-5;
+  @apply w-full h-full border border-gray-300 bg-zinc-950 rounded-lg sm:p-7 p-4 flex flex-col gap-5;
 }
 
 @utility grid-headtext {

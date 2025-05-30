@@ -27,15 +27,16 @@ export const clientReviews = [{}, {}, {}, {}];
 
 export const myProjects = [
   {
-    title: "The Chronoladder WIP",
-    desc: "",
-    subdesc: "",
+    title: "SciFi book - The Chronoladder WIP",
+    desc: "A science fiction book I am writing.",
+    subdesc:
+      "Set in the orbit of a black hole, time dilation is mirrored in the narrative structure, with characters experiencing time at different rates. The story explores themes of identity, memory, and the nature of reality as characters navigate a universe where time is power and relative.",
     href: "",
-    texture: "",
-    logo: "",
+    texture: "", //This is where the screen recorded mp4 will go.
+    logo: "/assets/theChronoladder_logo.png",
     logoStyle: {},
     spotlight: "",
-    tags: [],
+    tags: [{ path: "", name: "" }],
   },
   {
     title: "Discord-bot WIP",
@@ -46,7 +47,18 @@ export const myProjects = [
     logo: "",
     logoStyle: {},
     spotlight: "",
-    tags: [],
+    tags: [{ path: "", name: "" }],
+  },
+  {
+    title: "The New Jedi Order SW5E Campaign",
+    desc: "",
+    subdesc: "",
+    href: "",
+    texture: "",
+    logo: "",
+    logoStyle: {},
+    spotlight: "",
+    tags: [{ path: "", name: "" }],
   },
 ];
 
