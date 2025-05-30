@@ -17,19 +17,19 @@ export function DemoComputer(props: DemoComputerProps) {
   const group = useRef<THREE.Group>(null);
   const { nodes, materials } = useGLTF("/models/computer.glb");
 
-  const txt = useVideoTexture(props.texture ? props.texture : "/textures/project/project1.mp4"); //TODO: Update to my projects screen recording
+  // const txt = useVideoTexture(props.texture ? props.texture : "/textures/project/project1.mp4"); //TODO: Update to my projects screen recording
 
-  useGSAP(() => {
-    if (group.current?.rotation) {
-      gsap.from(group.current.rotation, { y: Math.PI / 2, duration: 1, ease: "power3.out" });
-    }
-  }, [txt]);
+  // useGSAP(() => {
+  //   if (group.current?.rotation) {
+  //     gsap.from(group.current.rotation, { y: Math.PI / 2, duration: 1, ease: "power3.out" });
+  //   }
+  // }, [txt]);
 
-  useEffect(() => {
-    if (txt) {
-      txt.flipY = false; // Ensure the video texture is not flipped vertically
-    }
-  }, [txt]);
+  // useEffect(() => {
+  //   if (txt) {
+  //     txt.flipY = false; // Ensure the video texture is not flipped vertically
+  //   }
+  // }, [txt]);
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -45,7 +45,7 @@ export function DemoComputer(props: DemoComputerProps) {
           rotation={[1.571, -0.005, 0.031]}
           scale={[0.661, 0.608, 0.401]}
         >
-          <meshBasicMaterial map={txt} />
+          {/* <meshBasicMaterial map={txt} /> */}
         </mesh>
         <group name="RootNode" position={[0, 1.093, 0]} rotation={[-Math.PI / 2, 0, -0.033]} scale={0.045}>
           <group
