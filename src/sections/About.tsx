@@ -57,7 +57,7 @@ const About = () => {
             <div className="grid-headtext">
               <p>location placeholder</p>
               <p className="grid-subtext">More placeholder</p>
-              <Button name="Click Me" isBeam containerClass="w-full mt-10" />
+              <Button name="I do nothing yet" isBeam containerClass="w-full mt-10" /> {/* TODO: Placeholder button */}
             </div>
           </div>
         </div>

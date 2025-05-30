@@ -25,7 +25,7 @@ const Projects = () => {
     <section className="c-space my-20">
       <p className="head-text">My Projects</p>
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
-        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-neutral-200">
+        <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-neutral-200 min-h-[600px]">
           <div className="absolute top-0 right-0">
             <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl" />
           </div>
@@ -55,7 +55,7 @@ const Projects = () => {
               <img src="/assets/arrow-up.png" className="w-3 h-3" alt="arrow"></img>
             </a>
           </div>
-          <div className="flex justify-between items-center mt-7">
+          <div className="flex justify-between items-center mt-auto">
             <button className="arrow-btn" onClick={() => handleNavigation("previous")}>
               <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
             </button>

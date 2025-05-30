@@ -38,7 +38,7 @@ const Hero = () => {
         </div>
         <div className="absolute bottom-7 left-0 right-0 w-full z-10 c-space">
           <a href="#about" className="w-fit">
-            <Button name="Click Me" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
+            <Button name="Go to about" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
           </a>
         </div>
       </div>

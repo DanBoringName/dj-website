@@ -33,6 +33,7 @@ export function DemoComputer(props: DemoComputerProps) {
 
   return (
     <group ref={group} {...props} dispose={null}>
+      ./
       <group name="Scene">
         <mesh
           name="monitor-screen"
