@@ -13,7 +13,12 @@
         "editor.wordWrap": "on",
         "editor.wordWrapColumn": 120,
         "editor.rulers": [120],
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "typescript.preferences.importModuleSpecifier": "shortest",
+        "typescript.preferences.autoImportFileExcludePatterns": [],
+        "javascript.suggest.autoImports": true,
+        "typescript.suggest.autoImports": true,
+        "typescript.updateImportsOnFileMove.enabled": "always"
       }
     }
   },

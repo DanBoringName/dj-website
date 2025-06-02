@@ -24,6 +24,7 @@
     "react-dom": "^19.1.0",
     "react-globe.gl": "^2.33.2",
     "react-responsive": "^10.0.1",
+    "react-router-dom": "^7.6.1",
     "tailwindcss": "^4.1.7",
     "three": "^0.176.0"
   },

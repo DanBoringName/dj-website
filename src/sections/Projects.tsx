@@ -22,7 +22,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="c-space my-20">
+    <section className="c-space my-20" id="projects">
       <p className="head-text">My Projects</p>
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-neutral-200 min-h-[600px]">
@@ -51,7 +51,7 @@ const Projects = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <p>Check Live Site (WIP)</p>
+              <p>Go to (WIP)</p>
               <img src="/assets/arrow-up.png" className="w-3 h-3" alt="arrow"></img>
             </a>
           </div>

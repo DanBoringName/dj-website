@@ -1,10 +1,30 @@
+import ReactDOM from "react-dom/client";
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
+import App from "./routes/App.tsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
+import Discordbot from "./routes/DiscordBot.tsx";
+import Home from "./routes/Home.tsx";
 
-createRoot(document.getElementById("root")!).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      { path: "discordbot/", element: <Discordbot /> },
+    ],
+  },
+  // {path: "book/", element: }
+]);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 );

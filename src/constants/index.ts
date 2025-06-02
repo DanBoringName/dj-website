@@ -31,7 +31,7 @@ export const myProjects = [
     desc: "A science fiction book I am writing.",
     subdesc:
       "Set in the orbit of a black hole, time dilation is mirrored in the narrative structure, with characters experiencing time at different rates. The story explores themes of identity, memory, and the nature of reality as characters navigate a universe where time is power and relative.",
-    href: "",
+    href: "book",
     texture: "", //This is where the screen recorded mp4 will go.
     logo: "/assets/theChronoladder_logo.png",
     logoStyle: {},
@@ -42,7 +42,7 @@ export const myProjects = [
     title: "Discord-bot WIP",
     desc: "",
     subdesc: "",
-    href: "",
+    href: "discordbot/",
     texture: "",
     logo: "",
     logoStyle: {},
