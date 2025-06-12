@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      { path: "discordbot/", element: <Discordbot /> },
+      { path: "/discordbot", element: <Discordbot /> },
     ],
   },
 ]);

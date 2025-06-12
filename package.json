@@ -12,6 +12,7 @@
     "eslint": "npx eslint ."
   },
   "dependencies": {
+    "@go-task/cli": "^3.44.0",
     "@gsap/react": "^2.1.2",
     "@react-three/drei": "^10.0.8",
     "@react-three/fiber": "^9.1.2",
