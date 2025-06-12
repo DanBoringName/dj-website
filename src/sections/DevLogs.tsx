@@ -19,7 +19,7 @@ const DevLogs = () => {
               <p className="grid-subtext p-2">
                 A few friends who have wanted to learn a bit about coding have joined as collaborators on the project.
               </p>
-              <video autoPlay loop muted>
+              <video autoPlay loop muted className=" w-full sm:h-[266px] h-fit">
                 <source src="/assets/bot_demo_june.mp4" type="video/mp4" />
               </video>
             </div>
