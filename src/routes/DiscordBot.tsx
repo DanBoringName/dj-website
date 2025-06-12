@@ -1,4 +1,4 @@
-import { navLinks, type NavLink } from "../constants";
+import { type NavLink } from "../constants";
 import DevLogs from "../sections/DevLogs";
 import Navbar from "../sections/Navbar";
 
