@@ -18,7 +18,17 @@
         "typescript.preferences.autoImportFileExcludePatterns": [],
         "javascript.suggest.autoImports": true,
         "typescript.suggest.autoImports": true,
-        "typescript.updateImportsOnFileMove.enabled": "always"
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "cSpell.language": "en-GB",
+        "cSpell.ignorePaths": [
+          "package-lock.json",
+          "node_modules",
+          "vscode-extension",
+          ".git/{info,lfs,logs,refs,objects}/**",
+          ".git/{index,*refs,*HEAD}",
+          ".vscode",
+          ".vscode-insiders"
+        ]
       }
     }
   },
