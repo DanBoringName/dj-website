@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { navLinks } from "../constants";
+import type { NavLink } from "../constants";
 
-const NavItems = () => {
+interface NavLinksProps {
+  navLinks: NavLink[];
+}
+
+const NavItems = ({ navLinks }: NavLinksProps) => {
   return (
     <ul className="nav-ul">
       {navLinks.map(({ id, href, name }) => (
@@ -15,7 +19,7 @@ const NavItems = () => {
   );
 };
 
-const Navbar = () => {
+const Navbar = ({ navLinks }: NavLinksProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -37,13 +41,13 @@ const Navbar = () => {
             <img src={isOpen ? "assets/close.svg" : "assets/menu.svg"} alt="toggle" className="w-6 h-6" />
           </button>
           <nav className="sm:flex hidden">
-            <NavItems />
+            <NavItems navLinks={navLinks} />
           </nav>
         </div>
       </div>
       <div className={`nav-sidebar ${isOpen ? "max-h-screen" : "max-h-0"}`}>
         <nav className="p-5">
-          <NavItems />
+          <NavItems navLinks={navLinks} />
         </nav>
       </div>
     </header>

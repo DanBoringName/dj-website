@@ -20,7 +20,6 @@ const router = createBrowserRouter([
       { path: "discordbot/", element: <Discordbot /> },
     ],
   },
-  // {path: "book/", element: }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

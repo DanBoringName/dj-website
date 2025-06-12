@@ -1,5 +1,11 @@
 import { Vector3 } from "three";
 
+export type NavLink = {
+  id: number;
+  name: string;
+  href: string;
+};
+
 export const navLinks = [
   {
     id: 1,
@@ -27,26 +33,27 @@ export const clientReviews = [{}, {}, {}, {}];
 
 export const myProjects = [
   {
+    title: "Discord-bot WIP",
+    desc: "An AI integrated discord bot built in Rust",
+    subdesc:
+      "Research is still being done on the scope of this. The aim is to create a bot useful for any tabletop situation, from asking the bot to create a quick image from your description to highlighting key parts of a conversation.",
+    href: "discordbot/",
+    texture: undefined, //This is where the screen recorded mp4 will go. string
+    logo: undefined, //Logo for the project
+    logoStyle: {},
+    spotlight: undefined,
+    tags: [{ path: "", name: "" }],
+  },
+  {
     title: "SciFi book - The Chronoladder WIP",
     desc: "A science fiction book I am writing.",
     subdesc:
       "Set in the orbit of a black hole, time dilation is mirrored in the narrative structure, with characters experiencing time at different rates. The story explores themes of identity, memory, and the nature of reality as characters navigate a universe where time is power and relative.",
     href: "book",
-    texture: "", //This is where the screen recorded mp4 will go.
+    texture: undefined,
     logo: "/assets/theChronoladder_logo.png",
     logoStyle: {},
-    spotlight: "",
-    tags: [{ path: "", name: "" }],
-  },
-  {
-    title: "Discord-bot WIP",
-    desc: "",
-    subdesc: "",
-    href: "discordbot/",
-    texture: "",
-    logo: "",
-    logoStyle: {},
-    spotlight: "",
+    spotlight: undefined,
     tags: [{ path: "", name: "" }],
   },
   {
@@ -54,10 +61,10 @@ export const myProjects = [
     desc: "",
     subdesc: "",
     href: "",
-    texture: "",
-    logo: "",
+    texture: undefined,
+    logo: undefined,
     logoStyle: {},
-    spotlight: "",
+    spotlight: undefined,
     tags: [{ path: "", name: "" }],
   },
 ];

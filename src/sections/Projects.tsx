@@ -4,6 +4,8 @@ import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
 import CanvasLoader from "../components/CanvasLoader";
 import DemoComputer from "../components/DemoComputer";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const projectCount = myProjects.length;
 
@@ -21,6 +23,10 @@ const Projects = () => {
     });
   };
 
+  useGSAP(() => {
+    gsap.fromTo(`.animatedText`, { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.2, ease: "power2.inOut" });
+  }, [selectedProjectIndex]);
+
   return (
     <section className="c-space my-20" id="projects">
       <p className="head-text">My Projects</p>
@@ -34,8 +40,8 @@ const Projects = () => {
           </div>
           <div className="flex flex-col gap-5 text-neutral-600 my-5">
             <p className="text-white text-2xl font-semibold animatedText">{currentProject.title}</p>
-            <p className="animatedText">{currentProject.desc}</p>
-            <p className="animatedText">{currentProject.subdesc}</p>
+            <p className="animatedText text-[#afb0b6]">{currentProject.desc}</p>
+            <p className="animatedText text-[#afb0b6]">{currentProject.subdesc}</p>
           </div>
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
