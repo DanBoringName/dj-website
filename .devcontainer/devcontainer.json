@@ -13,9 +13,8 @@
         "editor.wordWrap": "on",
         "editor.rulers": [120],
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "typescript.preferences.importModuleSpecifier": "shortest",
-        "javascript.suggest.autoImports": true,
-        "typescript.suggest.autoImports": true,
+        "js/ts.preferences.importModuleSpecifier": "shortest",
+        "js/ts.suggest.autoImports": true,
         "cSpell.language": "en-GB",
         "cSpell.ignorePaths": [
           "package-lock.json",
