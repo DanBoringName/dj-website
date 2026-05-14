@@ -1,6 +1,6 @@
 # Active Inference: The Predictive Brain
 
-This post summarizes a slide deck about Active Inference, a neuroscience-inspired framework that treats the brain as a prediction engine. The slide deck is embedded below, and it is the best place to explore the full visuals and examples.
+This post summarises my work with Durham University on the topic of Active Inference, a neuroscience-inspired framework that treats the brain as a prediction engine. The slide deck is embedded below and puts software spin on Active Inference, and it is the best place to explore the full visuals and examples.
 
 ## The Brain as a Prediction Machine
 

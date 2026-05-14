@@ -18,7 +18,7 @@ const Blog = () => {
   const [markdown, setMarkdown] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [posts, setPosts] = useState<{ slug: string; title: string }[]>([]);
+  const [posts, setPosts] = useState<{ slug: string; title: string; summary: string }[]>([]);
 
   // List of post slugs - add new slugs here as you create .md files
   const postSlugs = ["active-inference", "mcp"];
@@ -32,6 +32,31 @@ const Blog = () => {
       }
     }
     return "Untitled Post";
+  };
+
+  const extractSummary = (content: string): string => {
+    const lines = content.split("\n").map((line) => line.trim());
+    let foundTitle = false;
+    const summaryLines: string[] = [];
+
+    for (const line of lines) {
+      if (!foundTitle) {
+        if (line.startsWith("# ")) {
+          foundTitle = true;
+        }
+        continue;
+      }
+
+      if (line === "") {
+        if (summaryLines.length > 0) break;
+        continue;
+      }
+
+      if (line.startsWith("#")) break;
+      summaryLines.push(line);
+    }
+
+    return summaryLines.join(" ").trim();
   };
 
   useEffect(() => {
@@ -54,14 +79,15 @@ const Blog = () => {
     } else {
       // Load posts for index
       const loadPosts = async () => {
-        const loadedPosts: { slug: string; title: string }[] = [];
+        const loadedPosts: { slug: string; title: string; summary: string }[] = [];
         for (const slug of postSlugs) {
           try {
             const response = await fetch(`/blog/${slug}.md`);
             if (response.ok) {
               const text = await response.text();
               const title = extractTitle(text);
-              loadedPosts.push({ slug, title });
+              const summary = extractSummary(text);
+              loadedPosts.push({ slug, title, summary });
             }
           } catch (error) {
             console.error(`Error loading ${slug}:`, error);
@@ -89,8 +115,10 @@ const Blog = () => {
               <div className="text-white w-full">
                 <ReactMarkdown
                   components={{
-                    h1: ({ children }) => <h1 className="text-3xl font-bold mb-4">{children}</h1>,
-                    h2: ({ children }) => <h2 className="text-2xl font-semibold mb-3 mt-6">{children}</h2>,
+                    h1: ({ children }) => <h1 className="text-3xl font-bold mb-4 text-blue-400">{children}</h1>,
+                    h2: ({ children }) => (
+                      <h2 className="text-2xl font-semibold mb-3 mt-6 text-blue-400">{children}</h2>
+                    ),
                     p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
                     ul: ({ children }) => <ul className="list-disc list-inside mb-4">{children}</ul>,
                     ol: ({ children }) => <ol className="list-decimal list-inside mb-4">{children}</ol>,
@@ -128,14 +156,13 @@ const Blog = () => {
           ) : (
             <div className="space-y-6">
               {posts.map((post) => (
-                <section key={post.slug} className="grid-container w-full max-w-full border border-gray-700">
-                  <h2 className="text-2xl font-semibold mb-2 text-blue-400">
-                    <Link to={`/blog/${post.slug}`} className="hover:text-blue-300">
-                      {post.title}
-                    </Link>
-                  </h2>
-                  <p className="text-gray-300">Click to read more...</p>
-                </section>
+                <Link key={post.slug} to={`/blog/${post.slug}`} className="block w-full">
+                  <section className="grid-container w-full max-w-full border border-gray-700 hover:border-blue-400 transition-colors duration-150">
+                    <h2 className="text-2xl font-semibold mb-2 text-blue-400">{post.title}</h2>
+                    {post.summary && <p className="text-gray-300 mb-3">{post.summary}</p>}
+                    <p className="text-gray-300">Click to read more...</p>
+                  </section>
+                </Link>
               ))}
             </div>
           )}
