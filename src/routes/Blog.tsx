@@ -2,9 +2,18 @@ import ReactMarkdown from "react-markdown";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Navbar from "../sections/Navbar";
+import SlideCarousel from "../components/SlideCarousel";
 import { navLinks } from "../constants";
 
 const Blog = () => {
+  const slideDecks: Record<string, { basePath: string; count: number; title: string; description?: string }> = {
+    "active-inference": {
+      basePath: "/blog/presentations/active_inference_complete_presentation",
+      count: 17,
+      title: "Active Inference Presentation",
+      description: "Navigate the exported slides below.",
+    },
+  };
   const { slug } = useParams();
   const [markdown, setMarkdown] = useState("");
   const [loading, setLoading] = useState(false);
@@ -12,7 +21,7 @@ const Blog = () => {
   const [posts, setPosts] = useState<{ slug: string; title: string }[]>([]);
 
   // List of post slugs - add new slugs here as you create .md files
-  const postSlugs = ["sample", "sample2"];
+  const postSlugs = ["active-inference", "mcp"];
 
   // Function to extract title from markdown content
   const extractTitle = (content: string): string => {
@@ -95,6 +104,11 @@ const Blog = () => {
                   {markdown}
                 </ReactMarkdown>
               </div>
+            </section>
+          )}
+          {slug && slideDecks[slug] && (
+            <section className="grid-container w-full max-w-full mx-auto mt-8">
+              <SlideCarousel slideCount={17} {...slideDecks[slug]} />
             </section>
           )}
         </div>
