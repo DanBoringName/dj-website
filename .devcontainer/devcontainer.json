@@ -2,7 +2,7 @@
   "name": "dj-website-dockerfile",
   "image": "mcr.microsoft.com/devcontainers/base:jammy",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/node:2.0.0": {}
   },
   "forwardPorts": [3000],
   "customizations": {
@@ -11,14 +11,11 @@
       "settings": {
         "editor.formatOnSave": true,
         "editor.wordWrap": "on",
-        "editor.wordWrapColumn": 120,
         "editor.rulers": [120],
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "typescript.preferences.importModuleSpecifier": "shortest",
-        "typescript.preferences.autoImportFileExcludePatterns": [],
         "javascript.suggest.autoImports": true,
         "typescript.suggest.autoImports": true,
-        "typescript.updateImportsOnFileMove.enabled": "always",
         "cSpell.language": "en-GB",
         "cSpell.ignorePaths": [
           "package-lock.json",
