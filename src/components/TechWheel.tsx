@@ -10,27 +10,30 @@ const technologies: Technology[] = [
   {
     name: "TypeScript",
     slug: "typescript",
-    description: "My default language for the web - including this site. Types catch the silly mistakes I would otherwise ship.",
+    description: "My favourite language. Where possible I will use Typescript for any frontend business.",
   },
   {
     name: "React",
     slug: "react",
-    description: "Component-driven UIs. The site you are scrolling through right now is a React app.",
+    description:
+      "Component-driven UIs. This site and others I have build have mostly came with React. This is the first time I have integrated React with Three.js for style.",
   },
   {
     name: "Vite",
     slug: "vite",
-    description: "Fast dev server and build tool for every modern front-end project I start.",
+    description: "If you know what React is and build frontends but don't know what vite is I am confused.",
   },
   {
     name: "Python",
     slug: "python",
-    description: "My go-to for scripting, data wrangling, and most back-end services I have written.",
+    description:
+      "Python has always been my backend go to, a quick language to template and prototype. Python and I have our difference, I largely hate it if I'm being honest, but that comes from its flexible nature and the miraculous ways people many to hold a project up with duct tape, itching to fall over. I am currently using Python to build an Active Inference Passive Observer Markov Decision Process (POMDP) and have previously trained smaller conventional aI models using reinforcement learning and my personal hardware. If I ever build a backend for this website it will most likely be in Python",
   },
   {
     name: "FastAPI",
     slug: "fastapi",
-    description: "Typed, async Python APIs with docs that generate themselves. Used for the JSON layer behind a few side projects.",
+    description:
+      "For those projects I have worked on that require a front and backend FastAPI is my go to. It provides, async Python APIs and has been used for the JSON layer behind a few of my larger projects.",
   },
   {
     name: "Three.js",
@@ -40,52 +43,55 @@ const technologies: Technology[] = [
   {
     name: "Godot",
     slug: "godotengine",
-    description: "Where I prototype game ideas and play with real-time interactive systems.",
+    description:
+      "Where I prototype game ideas and play with real-time interactive systems. Still a rookie here but slowly making progress on a solo developed game.",
   },
   {
     name: "Rust",
     slug: "rust",
-    description: "Reach for it when I want performance and compile-time guarantees. The Discord bot project lives here.",
+    description:
+      "Go to for when I want performance and compile-time guarantees. My Discord bot project lives here, integrating an LLM into discords chat window for ease of research and conversation. Project largely abandoned for now as it was just a prototype.",
   },
   {
     name: "Tokio",
     slug: "tokio",
-    description: "Async runtime powering the Rust services I write - concurrent network code without giving up safety.",
+    description:
+      "Async runtime powering the Rust Discord bot I write. One of the more difficult things I've had to content with in my software engineering career.",
   },
   {
     name: "C++",
     slug: "cplusplus",
-    description: "Where I first learned to care about memory, ownership, and what the machine is actually doing.",
+    description:
+      "Where I first learned to care about memory, ownership, and what the machine is actually doing. Still hate it though and will avoid all C languages like the plague.",
   },
   {
     name: "PostgreSQL",
     slug: "postgresql",
-    description: "My default relational database. Reliable, expressive SQL, and a feature set that keeps surprising me.",
+    description:
+      "My default relational database. Reliable, expressive SQL, mostly used for vector databases when training my reinforcement learning models.",
   },
   {
     name: "MinIO",
     slug: "minio",
-    description: "Self-hosted, S3-compatible object storage for media, backups, and project artifacts.",
+    description:
+      "If you don't know what minIO is it is a self-hosted, S3-compatible object storage for media, backups, and project artifacts. A cheaper AWS S3 alternative.",
   },
   {
     name: "AWS",
     slug: "amazonwebservices",
-    description: "Cloud infrastructure for deploying services, storage, and networking - usually provisioned via Terraform.",
+    description:
+      "Too complicated to explain but the tag line is Cloud infrastructure for deploying services, storage, and networking - usually provisioned via Terraform. I have had to become accustom to AWS over my career from S3s to EC2s to Lambdas to Terraform etc.. Extremely powerful cloud hosted services.",
   },
   {
     name: "Terraform",
     slug: "terraform",
-    description: "Infrastructure as code. I treat my cloud setups as commits, not clicks.",
-  },
-  {
-    name: "Cloudflare",
-    slug: "cloudflare",
-    description: "DNS, CDN, and edge tooling sitting in front of most of my deployments.",
+    description: "Infrastructure as code. Used in partnership with my AWS and Kubernetes projects.",
   },
   {
     name: "Apache",
     slug: "apache",
-    description: "Reverse proxies and static hosting for the more traditional parts of the stack.",
+    description:
+      "My original host for my website that provides reverse proxies and static hosting. Relatively simple to use and provides a lot of flexibility",
   },
 ];
 
@@ -112,8 +118,8 @@ const TechWheel = () => {
   const selected = technologies[selectedIndex];
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="relative w-full max-w-[280px] aspect-square">
+    <div className="flex flex-col md:flex-row items-center md:items-stretch gap-6 md:gap-8">
+      <div className="relative w-full max-w-[260px] aspect-square shrink-0">
         {technologies.map((tech, i) => {
           const totalAngle = i * ANGLE_STEP + rotation;
           const isSelected = i === selectedIndex;
@@ -140,7 +146,10 @@ const TechWheel = () => {
             >
               {hasFailed ? (
                 <span className="text-[10px] font-semibold text-white">
-                  {tech.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase()}
+                  {tech.name
+                    .replace(/[^A-Za-z0-9]/g, "")
+                    .slice(0, 2)
+                    .toUpperCase()}
                 </span>
               ) : (
                 <img
@@ -174,9 +183,10 @@ const TechWheel = () => {
         </div>
       </div>
 
-      <div className="text-center min-h-[88px]">
-        <p className="grid-headtext">{selected.name}</p>
-        <p className="grid-subtext">{selected.description}</p>
+      <div className="flex-1 flex flex-col justify-center text-center md:text-left min-h-[120px]">
+        <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Tech Stack</p>
+        <p className="grid-headtext mt-2 text-2xl">{selected.name}</p>
+        <p className="grid-subtext mt-2">{selected.description}</p>
       </div>
     </div>
   );
