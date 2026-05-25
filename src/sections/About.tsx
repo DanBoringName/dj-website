@@ -10,7 +10,7 @@ const About = () => {
           <div className="grid-container">
             <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
             <div>
-              <p className="grid-headtext">Hi, I'm Dan</p>
+              <p className="grid-headtext">Hi, I&apos;m Dan</p>
               <p className="grid-subtext">
                 With 2 1/2 years of coding experience, I finally decided to crack on with making my own site with a
                 focus on something animated & 3D

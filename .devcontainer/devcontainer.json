@@ -4,7 +4,7 @@
   "features": {
     "ghcr.io/devcontainers/features/node:2.0.0": {}
   },
-  "forwardPorts": [3000],
+  "forwardPorts": [8080],
   "customizations": {
     "vscode": {
       "extensions": ["streetsidesoftware.code-spell-checker", "esbenp.prettier-vscode", "bradlc.vscode-tailwindcss"],

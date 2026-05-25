@@ -21,9 +21,7 @@ const BlogPreview = () => {
       <div>
         <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">More than a portfolio</p>
         <p className="grid-headtext mt-2">From the Blog</p>
-        <p className="grid-subtext">
-          Short essays on what I am learning, building, and curious about.
-        </p>
+        <p className="grid-subtext">Short essays on what I am learning, building, and curious about.</p>
       </div>
 
       <div className="flex flex-col gap-3">
@@ -41,17 +39,12 @@ const BlogPreview = () => {
                 className="rounded-lg border border-white/10 bg-white/[0.03] hover:border-blue-400/60 hover:bg-white/[0.06] transition-colors p-4"
               >
                 <p className="text-blue-300 font-medium">{post.title}</p>
-                {post.summary && (
-                  <p className="text-neutral-400 text-sm mt-2">{post.summary}</p>
-                )}
+                {post.summary && <p className="text-neutral-400 text-sm mt-2">{post.summary}</p>}
               </Link>
             ))}
       </div>
 
-      <Link
-        to="/blog"
-        className="self-start mt-auto text-sm text-blue-300 hover:text-blue-200 transition-colors"
-      >
+      <Link to="/blog" className="self-start mt-auto text-sm text-blue-300 hover:text-blue-200 transition-colors">
         Read all posts →
       </Link>
     </div>

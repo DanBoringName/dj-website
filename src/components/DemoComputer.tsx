@@ -7,13 +7,13 @@ import { useGLTF, useVideoTexture } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import * as THREE from "three";
+import type { ThreeElements } from "@react-three/fiber";
 import { useScreenMirror } from "./useScreenMirror";
 
-interface DemoComputerProps {
+type DemoComputerProps = ThreeElements["group"] & {
   texture?: string;
   isLive?: boolean;
-  [key: string]: any;
-}
+};
 
 function VideoScreenMaterial({ src }: { src: string }) {
   const videoTexture = useVideoTexture(src);
