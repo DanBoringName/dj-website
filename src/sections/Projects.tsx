@@ -73,11 +73,7 @@ const Projects = () => {
             )}
           </div>
           <div className="flex justify-between items-center mt-auto">
-            <button
-              className="arrow-btn"
-              onClick={() => handleNavigation("previous")}
-              aria-label="Previous project"
-            >
+            <button className="arrow-btn" onClick={() => handleNavigation("previous")} aria-label="Previous project">
               <img src="/assets/left-arrow.png" alt="" aria-hidden="true" className="w-4 h-4" />
             </button>
             <div className="flex items-center gap-2">
@@ -92,11 +88,7 @@ const Projects = () => {
                 />
               ))}
             </div>
-            <button
-              className="arrow-btn"
-              onClick={() => handleNavigation("next")}
-              aria-label="Next project"
-            >
+            <button className="arrow-btn" onClick={() => handleNavigation("next")} aria-label="Next project">
               <img src="/assets/right-arrow.png" alt="" aria-hidden="true" className="w-4 h-4" />
             </button>
           </div>

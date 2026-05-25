@@ -9,30 +9,30 @@ import gsap from "gsap";
 import * as THREE from "three";
 import { useScreenMirror } from "./useScreenMirror";
 
-const FALLBACK_TEXTURE = "/textures/project/project1.mp4";
-
 interface DemoComputerProps {
   texture?: string;
   isLive?: boolean;
   [key: string]: any;
 }
 
-export function DemoComputer({ texture, isLive, ...props }: DemoComputerProps) {
-  const group = useRef<THREE.Group>(null);
-  const { nodes, materials } = useGLTF("/models/computer.glb");
-  const videoTexture = useVideoTexture(texture ?? FALLBACK_TEXTURE);
-  const mirrorTexture = useScreenMirror(isLive ?? false);
-  const screenTexture = isLive ? mirrorTexture : videoTexture;
-
+function VideoScreenMaterial({ src }: { src: string }) {
+  const videoTexture = useVideoTexture(src);
   useEffect(() => {
     if (videoTexture) videoTexture.flipY = false;
   }, [videoTexture]);
+  return <meshBasicMaterial map={videoTexture} toneMapped={false} />;
+}
+
+export function DemoComputer({ texture, isLive, ...props }: DemoComputerProps) {
+  const group = useRef<THREE.Group>(null);
+  const { nodes, materials } = useGLTF("/models/computer.glb");
+  const mirrorTexture = useScreenMirror(isLive ?? false);
 
   useGSAP(() => {
     if (group.current?.rotation) {
       gsap.from(group.current.rotation, { y: Math.PI / 2, duration: 1, ease: "power3.out" });
     }
-  }, [screenTexture]);
+  }, [isLive, texture]);
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -47,7 +47,13 @@ export function DemoComputer({ texture, isLive, ...props }: DemoComputerProps) {
           rotation={[1.571, -0.005, 0.031]}
           scale={[0.661, 0.608, 0.401]}
         >
-          <meshBasicMaterial map={screenTexture} toneMapped={false} />
+          {isLive ? (
+            <meshBasicMaterial map={mirrorTexture} toneMapped={false} />
+          ) : texture ? (
+            <VideoScreenMaterial src={texture} />
+          ) : (
+            <meshBasicMaterial color="black" toneMapped={false} />
+          )}
         </mesh>
         <group name="RootNode" position={[0, 1.093, 0]} rotation={[-Math.PI / 2, 0, -0.033]} scale={0.045}>
           <group

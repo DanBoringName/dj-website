@@ -5,7 +5,11 @@ type DevLogEntry = {
 
 const entries: DevLogEntry[] = [
   {
-    date: "2026 — Now",
+    date: "2026 — May",
+    body: "Slotted the active inference Passive Observer Markov Decision Process (POMDP) project into the projects panel. It currently contains two JAX-based agents that infers their own positions in continuous and discrete space respectively.",
+  },
+  {
+    date: "2026 — May",
     body: "Rebuilt the about section, added the tech wheel, blog preview, and a live mini-monitor for the projects panel.",
   },
   {
@@ -26,10 +30,7 @@ const DevLogs = () => {
 
       <div className="flex flex-col gap-3 flex-1">
         {entries.map((entry) => (
-          <div
-            key={entry.date}
-            className="rounded-lg border border-white/10 bg-white/[0.03] p-4"
-          >
+          <div key={entry.date} className="rounded-lg border border-white/10 bg-white/[0.03] p-4">
             <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">{entry.date}</p>
             <p className="grid-subtext mt-2">{entry.body}</p>
           </div>

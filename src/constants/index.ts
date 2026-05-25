@@ -81,6 +81,14 @@ export const myProjects: Project[] = [
     spotlight: "/assets/spotlight2.png",
     tags: [],
   },
+  {
+    title: "Active Inference Agent",
+    desc: "A project exploring active inference agents currently built on pymdp and JAX.",
+    subdesc: "",
+    href: "",
+    spotlight: "/assets/spotlight2.png",
+    tags: [],
+  },
 ];
 
 export const calculateSizes = (isSmall: boolean, isMobile: boolean, isTablet: boolean) => {
