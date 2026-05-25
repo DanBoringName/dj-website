@@ -2,6 +2,7 @@ import Globe from "react-globe.gl";
 import Button from "../components/Button";
 import { useState } from "react";
 import CopyTick from "../components/CopyTick";
+import TechWheel from "../components/TechWheel";
 
 const About = () => {
   const [hasCopied, setHasCopied] = useState(false);
@@ -30,15 +31,8 @@ const About = () => {
         </div>
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
-            <img src="/assets/grid2.png" alt="grid-2" className="w-full sm:w-[276px] h-fit object-contain" />
-            {/* //placeholder replace with actual image */}
-            <div>
-              <p className="grid-headtext">Tech Stack</p>
-              <p className="grid-subtext">
-                I use a variety of technologies to build my projects, including React, Python, Three.js, and Tailwind
-                CSS.
-              </p>
-            </div>
+            <p className="grid-headtext">Tech Stack</p>
+            <TechWheel />
           </div>
         </div>
         <div className="col-span-1 xl:row-span-4">
