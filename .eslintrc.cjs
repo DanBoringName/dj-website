@@ -22,14 +22,14 @@ module.exports = {
     project: "./tsconfig.app.json",
     tsconfigRootDir: __dirname,
   },
-  plugins: ["react-refresh", "@typescript-eslint", "react", "@react-three/fiber"],
+  plugins: ["react-refresh", "@typescript-eslint", "react", "@react-three"],
   rules: {
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     "react/react-in-jsx-scope": "off",
     "react/no-unknown-property": [
       "error",
       {
-        ignore: ["intensity", "position", "args", "geometry", "material", "castShadow", "receiveShadow", "dispose"],
+        ignore: ["intensity", "position", "args", "geometry", "material", "castShadow", "receiveShadow", "dispose", "rotation", "map", "toneMapped"],
       },
     ],
   },

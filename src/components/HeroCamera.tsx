@@ -1,9 +1,9 @@
 import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
-import { useRef } from "react";
+import { type ReactNode, useRef } from "react";
 import * as THREE from "three";
 
-const HeroCamera = ({ children, isMobile }: { children: any; isMobile: any }) => {
+const HeroCamera = ({ children, isMobile }: { children: ReactNode; isMobile: boolean }) => {
   const groupRef = useRef<THREE.Group>(null);
   useFrame((state, delta) => {
     easing.damp3(state.camera.position, [0, 0, 30], 0.25, delta);
