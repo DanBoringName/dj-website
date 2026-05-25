@@ -1,0 +1,34 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      react:
+        patterns:
+          - 'react'
+          - 'react-*'
+          - '@types/react*'
+      three:
+        patterns:
+          - 'three'
+          - '@types/three'
+          - '@react-three/*'
+          - 'react-globe.gl'
+          - 'maath'
+      tooling:
+        patterns:
+          - 'eslint*'
+          - '@typescript-eslint/*'
+          - 'prettier'
+          - 'typescript'
+          - 'vite'
+          - '@vitejs/*'
+          - 'vite-plugin-*'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
