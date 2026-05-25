@@ -36,41 +36,50 @@ export const navLinks = [
 
 export const clientReviews = [{}, {}, {}, {}];
 
-export const myProjects = [
+export type ProjectTag = { path: string; name: string };
+
+export type Project = {
+  title: string;
+  desc: string;
+  subdesc: string;
+  href: string;
+  texture?: string;
+  logo?: string;
+  logoStyle?: Record<string, string>;
+  spotlight?: string;
+  tags: ProjectTag[];
+  isLive?: boolean;
+};
+
+export const myProjects: Project[] = [
+  {
+    title: "dj-elliott.com (this very site)",
+    desc: "The personal site you are currently looking at.",
+    subdesc:
+      "Mostly an excuse to crack on with Three.js properly. The hero is a black hole largely because I wrote my dissertation on solving Einstein's field equations to calculate black hole orbits, the tech wheel rotates because it felt like a good idea, and the rest is held together with TypeScript, React, Vite and Tailwind. Still very much a WIP - bits get reworked when I get bored.",
+    href: "/",
+    texture: "/textures/project/dj-website.mp4",
+    logo: "/assets/dj-elliott_website_logo.png",
+    logoStyle: {},
+    spotlight: "/assets/spotlight1.png",
+    tags: [
+      { path: "/assets/react.svg", name: "React" },
+      { path: "/assets/typescript.png", name: "TypeScript" },
+      { path: "/assets/tailwindcss.png", name: "Tailwind" },
+    ],
+    isLive: true,
+  },
   {
     title: "Discord-bot WIP",
     desc: "An AI integrated discord bot built in Rust",
     subdesc:
       "Research is still being done on the scope of this. The aim is to create a bot useful for any tabletop situation, from asking the bot to create a quick image from your description to highlighting key parts of a conversation.",
     href: "discordbot/",
-    texture: undefined, //This is where the screen recorded mp4 will go. string
-    logo: undefined, //Logo for the project
+    texture: "/textures/project/bot_demo_june.mp4",
+    logo: "/assets/project-logo1.png",
     logoStyle: {},
-    spotlight: undefined,
-    tags: [{ path: "", name: "" }],
-  },
-  {
-    title: "SciFi book - The Chronoladder WIP",
-    desc: "A science fiction book I am writing.",
-    subdesc:
-      "Set in the orbit of a black hole, time dilation is mirrored in the narrative structure, with characters experiencing time at different rates. The story explores themes of identity, memory, and the nature of reality as characters navigate a universe where time is power and relative.",
-    href: "book",
-    texture: undefined,
-    logo: "/assets/theChronoladder_logo.png",
-    logoStyle: {},
-    spotlight: undefined,
-    tags: [{ path: "", name: "" }],
-  },
-  {
-    title: "The New Jedi Order SW5E Campaign",
-    desc: "",
-    subdesc: "",
-    href: "",
-    texture: undefined,
-    logo: undefined,
-    logoStyle: {},
-    spotlight: undefined,
-    tags: [{ path: "", name: "" }],
+    spotlight: "/assets/spotlight2.png",
+    tags: [],
   },
 ];
 

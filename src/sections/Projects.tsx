@@ -32,43 +32,73 @@ const Projects = () => {
       <p className="head-text">My Projects</p>
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-neutral-200 min-h-[600px]">
-          <div className="absolute top-0 right-0">
-            <img src={currentProject.spotlight} alt="spotlight" className="w-full h-96 object-cover rounded-xl" />
-          </div>
-          <div className="p-3 backdrop-filter backdrop-blur-3xl w-fit rounded-lg" style={currentProject.logoStyle}>
-            <img src={currentProject.logo} alt="logo" className="w-10 h-10 shadow-sm" />
-          </div>
+          {currentProject.spotlight && (
+            <div className="absolute top-0 right-0 pointer-events-none">
+              <img
+                src={currentProject.spotlight}
+                alt=""
+                aria-hidden="true"
+                className="w-full h-96 object-cover rounded-xl opacity-60"
+              />
+            </div>
+          )}
+          {currentProject.logo && (
+            <div className="p-3 backdrop-filter backdrop-blur-3xl w-fit rounded-lg" style={currentProject.logoStyle}>
+              <img src={currentProject.logo} alt={`${currentProject.title} logo`} className="w-10 h-10 shadow-sm" />
+            </div>
+          )}
           <div className="flex flex-col gap-5 text-neutral-600 my-5">
             <p className="text-white text-2xl font-semibold animatedText">{currentProject.title}</p>
-            <p className="animatedText text-[#afb0b6]">{currentProject.desc}</p>
-            <p className="animatedText text-[#afb0b6]">{currentProject.subdesc}</p>
+            {currentProject.desc && <p className="animatedText text-[#afb0b6]">{currentProject.desc}</p>}
+            {currentProject.subdesc && <p className="animatedText text-[#afb0b6]">{currentProject.subdesc}</p>}
           </div>
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
               {currentProject.tags.map((tag, index) => (
-                <div key={index} className="tech-logo">
-                  <img src={tag.path} alt={tag.name} />
+                <div key={index} className="tech-logo" title={tag.name}>
+                  <img src={tag.path} alt={tag.name} className="w-full h-full object-contain" />
                 </div>
               ))}
             </div>
-            <a
-              className="flex items-center gap-2 cursor-pointer text-neutral-600"
-              href={currentProject.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <p>Go to (WIP)</p>
-              <img src="/assets/arrow-up.png" className="w-3 h-3" alt="arrow"></img>
-            </a>
+            {currentProject.href && (
+              <a
+                className="flex items-center gap-2 cursor-pointer text-neutral-400 hover:text-white transition-colors"
+                href={currentProject.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <p>Go to (WIP)</p>
+                <img src="/assets/arrow-up.png" className="w-3 h-3" alt="" aria-hidden="true" />
+              </a>
+            )}
           </div>
           <div className="flex justify-between items-center mt-auto">
-            <button className="arrow-btn" onClick={() => handleNavigation("previous")}>
-              <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
+            <button
+              className="arrow-btn"
+              onClick={() => handleNavigation("previous")}
+              aria-label="Previous project"
+            >
+              <img src="/assets/left-arrow.png" alt="" aria-hidden="true" className="w-4 h-4" />
             </button>
-            <button className="arrow-btn" onClick={() => handleNavigation("next")}>
-              <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
+            <div className="flex items-center gap-2">
+              {myProjects.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedProjectIndex(i)}
+                  aria-label={`Go to project ${i + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === selectedProjectIndex ? "w-6 bg-white" : "w-2 bg-white/30 hover:bg-white/60"
+                  }`}
+                />
+              ))}
+            </div>
+            <button
+              className="arrow-btn"
+              onClick={() => handleNavigation("next")}
+              aria-label="Next project"
+            >
+              <img src="/assets/right-arrow.png" alt="" aria-hidden="true" className="w-4 h-4" />
             </button>
-            {/* TODO: Add some indicator of how many pages there are, pagination with dots perhaps */}
           </div>
         </div>
         <div className="border border-neutral-600 bg-neutral-800 rounded-lg h-96 md:h-full">
@@ -78,7 +108,7 @@ const Projects = () => {
             <Center>
               <Suspense fallback={<CanvasLoader />}>
                 <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
-                  <DemoComputer texture={currentProject.texture} />
+                  <DemoComputer texture={currentProject.texture} isLive={currentProject.isLive} />
                 </group>
               </Suspense>
             </Center>
