@@ -1,4 +1,10 @@
 import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import remarkGfm from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkRemoveComments from "remark-remove-comments";
+import rehypeKatex from "rehype-katex";
+import "katex/dist/katex.min.css";
 import { Link } from "react-router-dom";
 import Navbar from "../sections/Navbar";
 import SlideCarousel from "./SlideCarousel";
@@ -34,6 +40,8 @@ const BlogPost = ({ markdown, slug, loading, error }: BlogPostProps) => {
           <section className="grid-container w-full max-w-full mx-auto">
             <div className="text-white w-full">
               <ReactMarkdown
+                remarkPlugins={[remarkFrontmatter, remarkRemoveComments, remarkGfm, remarkMath]}
+                rehypePlugins={[rehypeKatex]}
                 components={{
                   h1: ({ children }) => <h1 className="text-3xl font-bold mb-4 text-blue-400">{children}</h1>,
                   h2: ({ children }) => <h2 className="text-2xl font-semibold mb-3 mt-6 text-blue-400">{children}</h2>,

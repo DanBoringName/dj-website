@@ -20,7 +20,10 @@ const Blog = () => {
     if (slug) {
       fetch(`/blog/${slug}.md`)
         .then((response) => {
-          if (!response.ok) throw new Error("Post not found");
+          const type = response.headers.get("content-type") ?? "";
+          if (!response.ok || type.includes("text/html")) {
+            throw new Error("Post not found");
+          }
           return response.text();
         })
         .then((text) => setMarkdown(text))
