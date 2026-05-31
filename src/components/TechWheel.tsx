@@ -4,6 +4,8 @@ type Technology = {
   name: string;
   slug: string;
   description: string;
+  /** Override for the icon URL when Simple Icons doesn't carry the slug. */
+  iconUrl?: string;
 };
 
 const technologies: Technology[] = [
@@ -79,6 +81,8 @@ const technologies: Technology[] = [
   {
     name: "AWS",
     slug: "amazonwebservices",
+    // Simple Icons dropped the AWS mark over trademark policy; pull a white copy from Iconify instead.
+    iconUrl: "https://api.iconify.design/simple-icons/amazonaws.svg?color=%23ffffff",
     description:
       "Too complicated to explain but the tag line is Cloud infrastructure for deploying services, storage, and networking - usually provisioned via Terraform. I have had to become accustom to AWS over my career from S3s to EC2s to Lambdas to Terraform etc.. Extremely powerful cloud hosted services.",
   },
@@ -153,7 +157,7 @@ const TechWheel = () => {
                 </span>
               ) : (
                 <img
-                  src={`https://cdn.simpleicons.org/${tech.slug}/white`}
+                  src={tech.iconUrl ?? `https://cdn.simpleicons.org/${tech.slug}/white`}
                   alt=""
                   aria-hidden="true"
                   className="w-5 h-5 object-contain"
