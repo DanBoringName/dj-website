@@ -7,16 +7,6 @@ math: true # enable KaTeX/MathJax
 toc: true # auto table of contents
 ---
 
-<!--
-  STYLE NOTES (delete before publishing)
-  - Build the model incrementally: each section adds ONE new complication.
-  - State each result equation, THEN derive it line by line.
-  - One logical step per displayed equation.
-  - Number every equation you refer back to:  $$ ... \tag{n} $$
-  - End each conceptual unit with an Exercise + boxed Answer.
-  - Keep a running Notation table; introduce no symbol without defining it.
--->
-
 # How to derive Variational Free Energy: A Software Engineers Guide.
 
 ## Abstract
@@ -41,133 +31,21 @@ $$
 
 ## 2. The Simplest Case
 
-<!-- Minimal version of the problem: one observation, one variable. -->
 
 ### 2.1 Setting up the problem
 
-<!-- Define variables, assumptions, generative model. -->
-
-> **Notation**
-> | Symbol | Meaning |
-> |--------|---------|
-> | $x$ | <!-- ... --> |
-> | $v$ | <!-- ... --> |
 
 ### 2.2 Stating the result
 
-The quantity we want is
-
-$$
-% result equation here
-\tag{1}
-$$
 
 ### 2.3 Derivation
 
-<!-- Sentence. Then a line. Sentence. Then a line. -->
-
-$$
-% step
-\tag{2}
-$$
-
-> **Box 1 — <!-- key idea / intuition -->**
->
-> <!-- A boxed aside: intuition, alternative view, or caveat. -->
-
-> **Exercise 1.** <!-- prompt -->
->
-> <details><summary>Answer</summary>
->
-> <!-- worked solution -->
->
-> </details>
-
----
-
-## 3. Adding the Next Complication
-
-<!-- e.g. nonlinearity, prior, uncertainty — one new thing. -->
-
-### 3.1 Why the simple case isn't enough
-
-### 3.2 The extended result
-
-$$
-\tag{3}
-$$
-
-### 3.3 Derivation
-
-> **Exercise 2.** <!-- ... -->
->
-> <details><summary>Answer</summary>
->
-> </details>
-
----
-
-## 4. A Possible Neural Implementation
-
-<!-- Map the equations onto a circuit / mechanism / algorithm. -->
-
-![Figure 1. <!-- caption: nodes, connections, what each represents -->](figs/fig1.png)
-
-> **Exercise 3.** <!-- implement / simulate -->
->
-> <details><summary>Answer</summary>
->
-> ```python
-> # reference implementation
-> ```
->
-> </details>
-
----
-
-## 5. Learning the Parameters
-
-<!-- Generalize from inference to learning; derive the update rules. -->
-
-### 5.1 The objective
-
-### 5.2 Update rule
-
-$$
-\tag{4}
-$$
-
----
-
-## 6. Scaling Up / The General Case
-
-<!-- Multiple variables, hierarchy, vector/matrix form. -->
-
-$$
-\tag{5}
-$$
-
----
-
-## 7. Discussion
-
-<!-- Relation to other frameworks, limitations, extensions, open questions. -->
-
----
 
 ## Appendix A — <!-- e.g. background math / derivation details -->
 
 ## Appendix B — Exercise Solutions
 
-<!-- Optional: collected full solutions if not inlined above. -->
-
----
-
 ## Notation Summary
-
-| Symbol | Meaning | First used |
-| ------ | ------- | ---------- |
-|        |         | §          |
 
 ## References
 
