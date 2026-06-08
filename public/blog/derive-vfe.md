@@ -1,19 +1,19 @@
 ---
-title: "How to derive Variational Free Energy"
+title: "How to derive Variational Free Energy: A Software Engineers Guide - Part 1"
 author: "Dan Corva"
 date: 2026-05-31
-tags: [tutorial, derivation, <!-- ... -->]
+tags: [tutorial, derivation, active-inference, variational-free-energy, bayesian-inference, predictive-coding, computational-neuroscience, python]
 math: true # enable KaTeX/MathJax
 toc: true # auto table of contents
 ---
 
-# How to derive Variational Free Energy: A Software Engineers Guide.
+# How to derive Variational Free Energy: A Software Engineers Guide - Part 1.
 
 [Skip my ramblings, this isn't some hippy cookbook.](#2-the-simplest-case "button")
 
 ## 1. Introduction
 
-If you've ever been like me, lying awake at night contemplating how to implement continuous generative models within the framework of Active Inference (**ActInf** - I wanted to use AI but this doesn't need to be any more confusing than it already is) then I'm genuinely surprised because I thought I was weird. In my spare time I am building Active Inference POMDP models with my partner in crime Kev, mostly using the [pymdp](https://github.com/infer-actively/pymdp) python toolbox. Although this toolbox is brilliant and has been a joy to use, it currently doesn't support the creation of Continuous Generative Models (CGMs). This makes my current ultimate goal of creating a Mixed Generative Model (MGM) somewhat more difficult. To do this I need to understand how the fundamental equations of these models are derived, hence this post and subsequent posts. Due to its nature, there isn't a large amount of easily accessible content on Active Inference in general, so whilst learning how to code this stuff, I thought I might as well document it as I go.
+If you've ever been like me, lying awake at night contemplating how to implement continuous generative models within the framework of Active Inference, then I'm genuinely surprised because I thought I was weird. In my spare time I am building Active Inference POMDP models with my partner in crime Kev, mostly using the [pymdp](https://github.com/infer-actively/pymdp) python toolbox. Although this toolbox is brilliant and has been a joy to use, it currently doesn't support the creation of Continuous Generative Models (CGMs). This makes my current ultimate goal of creating a Mixed Generative Model (MGM) somewhat more difficult. To do this I need to understand how the fundamental equations of these models are derived, hence this post and subsequent posts. Due to its nature, there isn't a large amount of easily accessible content on Active Inference in general, so whilst learning how to code this stuff, I thought I might as well document it as I go.
 
 So what _is_ Variational Free Energy, before we drown in Greek? It is a mathematically tractable upper bound on sensory "surprise" (or negative log-evidence).
 
@@ -59,8 +59,8 @@ The story is this. We have a simple animal (Bogacz uses "animal" so I will too t
 
 So our two characters:
 
-- $v$ -- the **size** of the food (the hidden cause we want to infer)
-- $u$ -- the **noisy light intensity** the receptor actually reports (the observation)
+- $v$ — the **size** of the food (the hidden cause we want to infer)
+- $u$ — the **noisy light intensity** the receptor actually reports (the observation)
 
 Now we need to connect them. Light reflected off an object scales with its **area**, so Bogacz picks a nice clean non-linear function relating average light intensity to size:
 
@@ -82,7 +82,7 @@ $$
 f(x; \mu, \Sigma) = \frac{1}{\sqrt{2\pi\Sigma}} \, \exp\!\left(-\frac{(x-\mu)^2}{2\Sigma}\right) \tag{2}
 $$
 
-Read $f(x; \mu, \Sigma)$ as "the bell curve evaluated at $x$, for a distribution whose mean is $\mu$ and whose variance is $\Sigma$". The semicolon is just separating the value we're plugging in (on the left) from the two settings that define the curve's shape and position (on the right). I'll use the $f$ notation throughout - whenever you see it, it's the same formula, just with different things slotted into the blanks.
+Read $f(x; \mu, \Sigma)$ as "the bell curve evaluated at $x$, for a distribution whose mean is $\mu$ and whose variance is $\Sigma$". The semicolon is just separating the value we're plugging in (on the left) from the two settings that define the curve's shape and position (on the right). I'll use the $f$ notation throughout — whenever you see it, it's the same formula, just with different things slotted into the blanks.
 
 > _Side note for Bogacz, and worth repeating here_: a Gaussian isn't really the _right_ distribution for light intensity, because a Gaussian happily applies probabilities to negative numbers and there's no such thing as negative brightness. But it's clean, it's tractable, and it makes the maths behave, so let's just agree to look the other way, for now. This is a recurring theme in modelling: pick the distribution that lets you finish the derivation, apologise in the footnotes.
 
@@ -200,11 +200,11 @@ This next bit is the pivot the whole derivation hinges on, so I'm going to lay i
 
 Let me unpack that, because it's doing three separate clever things at once:
 
-- **"We look for a value which maximises..."** - The animal wants its single best guess for food size. This is the peak of the curve from before. Instead of calculating the whole curve, it just wants to know _where the top is_.
+- **"We look for a value which maximises..."** — The animal wants its single best guess for food size. This is the peak of the curve from before. Instead of calculating the whole curve, it just wants to know _where the top is_.
 
-- **"The posterior depends on a ratio, but the denominator doesn't depend on $\phi$."** - Bayes' rule is `prior x likelihood / normaliser`. That normaliser, $p(u)$, is the integral. But **it does not depend on the guess $\phi$.** It's a fixed number once $u$ is observed.
+- **"The posterior depends on a ratio, but the denominator doesn't depend on $\phi$."** — Bayes' rule is `prior x likelihood / normaliser`. That normaliser, $p(u)$, is the integral. But **it does not depend on the guess $\phi$.** It's a fixed number once $u$ is observed.
 
-- **"Thus the value which maximises it is the same one which maximises the numerator."** - This is the crux. Dividing everything by the same constant just **rescales** the curve; it doesn't move where the peak _is_. Like that one friend at a party that's a downer. They don't change the location of the party but they bring everybody down. So we can completely ignore that friend, I mean, the hard-to-compute denominator $p(u)$, and just maximise the numerator, keeping the party alive. The location of the maximum is unchanged.
+- **"Thus the value which maximises it is the same one which maximises the numerator."** — This is the crux. Dividing everything by the same constant just **rescales** the curve; it doesn't move where the peak _is_. Like that one friend at a party that's a downer. They don't change the location of the party but they bring everybody down. So we can completely ignore that friend, I mean, the hard-to-compute denominator $p(u)$, and just maximise the numerator, keeping the party alive. The location of the maximum is unchanged.
 
 Then one final convenience: we take the **log** of the numerator before maximising. This is safe because log is **monotonic** (a fancy way of saying it never reorders things, so it also doesn't move the peak). Like everyone wearing a hat at the party...something something...worn out party analogy. If $a > b$ then $\ln a > \ln b$, always. Taking logs also turns all our products into sums (via $\ln(ab) = \ln a + \ln b$), which is going to make the calculus nicer in about thirty seconds.
 
@@ -287,13 +287,13 @@ $$
 \frac{\partial F}{\partial \phi} = \frac{v_p - \phi}{\Sigma_p} + \frac{u - g(\phi)}{\Sigma_u}\, g'(\phi) \tag{9}
 $$
 
-> Quick note on that $g'(\phi)$ - it matters _enormously_. Remember the animal's sensor model was $g(v) = v^2$. So:
+> Quick note on that $g'(\phi)$ — it matters _enormously_. Remember the animal's sensor model was $g(v) = v^2$. So:
 >
 > $$
 > g(\phi) = \phi^2 \quad\Rightarrow\quad g'(\phi) = 2\phi
 > $$
 >
-> This is the **only place** the specific shape of the sensor enters the update. Swap in a different $g$ and _only_ $g'(\phi)$ changes - everything else in the equation is structural.
+> This is the **only place** the specific shape of the sensor enters the update. Swap in a different $g$ and _only_ $g'(\phi)$ changes — everything else in the equation is structural.
 
 #### Gradient ascent: letting the guess move
 
@@ -320,25 +320,25 @@ $$
 <div class="cols">
 <div class="col">
 
-**Term 1 - the pull towards prior expectation**
+**Term 1 — the pull towards prior expectation**
 
-- $v_p$ - the **prior mean**. What the animal expected the size to be before "seeing" anything. It's habitual beliefs.
-- $\phi$ - the **current guess**.
-- $v_p - \phi$ - how far the current guess is from what we expected. A **discrepancy**, sometimes referred to as a distance in the literature.
-- $\Sigma_p$ - the **prior variance**, i.e. the uncertainty in that prior expectation.
+- $v_p$ — the **prior mean**. What the animal expected the size to be before "seeing" anything. It's habitual beliefs.
+- $\phi$ — the **current guess**.
+- $v_p - \phi$ — how far the current guess is from what we expected. A **discrepancy**, sometimes referred to as a distance in the literature.
+- $\Sigma_p$ — the **prior variance**, i.e. the uncertainty in that prior expectation.
 
 So Term 1 says: _if your current guess has drifted away from your habitual belief, get pulled back towards it_. The strength of that pull is scaled with how confident the prior is. A tight prior (small $\Sigma_p$) has a larger influence; a vague prior (big $\Sigma_p$) has less influence.
 
 </div>
 <div class="col">
 
-**Term 2 - the pull towards the observation.**
+**Term 2 — the pull towards the observation.**
 
-- $u$ - the **actual sensory observation**. The light intensity the animal really observed.
-- $g(\phi)$ - what the animal _would expect_ to observe if its current guess $\phi$ were true. The sensory model is $g(\phi) = \phi^2$.
-- $u - g(\phi)$ - the **prediction error**. What it saw minus what it predicted it would see given its best guess. In predictive coding, this discrepancy between reality and expectation _is_ the signal that drives learning.
-- $\Sigma_u$ - the **sensory variance**, i.e. how noisy the sensor is. Large $\Sigma_u$ -> the sensor is bad, low trust; small $\Sigma_u$ -> the sensor is good, high trust.
-- $g'(\phi)$ - the **chain-rule factor** ($2\phi$ in our case). It does a units conversion: the prediction error lives in _observation units_ (luminance, for example), and $g'(\phi)$ translates it into a correction in _size units_ ($m^2$, for example).
+- $u$ — the **actual sensory observation**. The light intensity the animal really observed.
+- $g(\phi)$ — what the animal _would expect_ to observe if its current guess $\phi$ were true. The sensory model is $g(\phi) = \phi^2$.
+- $u - g(\phi)$ — the **prediction error**. What it saw minus what it predicted it would see given its best guess. In predictive coding, this discrepancy between reality and expectation _is_ the signal that drives learning.
+- $\Sigma_u$ — the **sensory variance**, i.e. how noisy the sensor is. Large $\Sigma_u$ -> the sensor is bad, low trust; small $\Sigma_u$ -> the sensor is good, high trust.
+- $g'(\phi)$ — the **chain-rule factor** ($2\phi$ in our case). It does a units conversion: the prediction error lives in _observation units_ (luminance, for example), and $g'(\phi)$ translates it into a correction in _size units_ ($m^2$, for example).
 
 So Term 2 says: _look at the gap between what you observed and what you predicted, scale it down if your sensor is unreliable, convert it into size-language, and influence your guess in that direction_.
 
