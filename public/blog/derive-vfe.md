@@ -287,6 +287,30 @@ In english this means "let your guess $\phi$ change over time at the rate of the
 
 ![A ball climbing the free-energy curve via gradient ascent: it moves fast where the slope is steep, slows as the gradient flattens, and comes to rest at the peak where ∂F/∂φ = 0.](../assets/gradient_ascent.gif)
 
+> **Worth flagging:** this is gradient _ascent_, not descent — notice there's no minus sign. But hang on, doesn't everyone bang on about _minimising_ free energy? They do, and there's no contradiction, it's a naming mismatch that we addressed in an earlier paragraph. The quantity we've been building, $F$, came straight out of logging the _numerator_ of Bayes' rule, so it's a goodness score we want to push _up_ (most probable guess = top of the hill). The free energy the literature tells you to minimise is defined the other way up, as a proxy for _surprise_, which you obviously want _down_. The two are just negatives of each other: $F_{\text{literature}} \approx -F_{\text{ours}}$. Climbing our hill _is_ descending their valley. Bogacz didn't flip his terms to match the convention because his derivation hands him this version for free; negating everything by hand just to agree with a sign convention would've added minus signs to every equation that follows, for zero benefit. So: we ascend, and we call it negative free energy to keep our consciences clear.
+
+#### The two terms, and their meaning.
+
+We're going to take a break from the algebra for a second and go back to the narrative. The update to $\phi$ is driven by two terms in equation (8). The first pulls the guess towards the the prior; the second pulls it according to the sensory input. Let's take a minute to recap each.
+
+$$
+\underbrace{\frac{v_p - \phi}{\Sigma_p}}_{\textbf{Term 1}} \qquad\qquad \underbrace{\frac{u - g(\phi)}{\Sigma_u}\, g'(\phi)}_{\textbf{Term 2}}
+$$
+
+**Term 1 - the pull towards prior expectation**
+
+- $v_p$ - the **prior mean**. What the animal expected the size to be before "seeing" anything. It's habitual beliefs.
+- $\phi$ - the **current guess**.
+- $v_p - \phi$ - how far the current guess is from what we expected. A **discrepancy**, sometimes called referred to as a distance in the literature.
+- $\Sigma_p$ - the **prior variance**, i.e. the uncertainty in that prior expectation.
+
+So Term 1 says: _if your current guess has drifted away from your habitual belief, get pulled back towards it_. The strength of that pull is scaled with how confident the prior is. A tight prior (small $Sigma_p$) have a larger influence; a vague prior (big $Sigma_p$) has less influence.
+
+**Term 2 - the pull towards the observation.**
+
+- $u$ - the **actual sensory observation**. The light intensity the animal really observed.
+- $g(\phi)$ - what the animal _would expect_ to observe if it's current guess $\phi$ were true. The sensory model is $g(\phi) = \phi^2$.
+
 ## Appendix A — <!-- e.g. background math / derivation details -->
 
 ## Appendix B — Exercise Solutions

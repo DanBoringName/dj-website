@@ -93,6 +93,9 @@ const BlogPost = ({ markdown, slug, loading, error }: BlogPostProps) => {
                     );
                   },
                   p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+                  img: ({ src, alt }) => (
+                    <img src={src} alt={alt} className="my-6 mx-auto block h-auto max-w-full rounded" />
+                  ),
                   blockquote: ({ children }) => (
                     <blockquote className="my-4 rounded-r border-l-4 border-blue-400/60 bg-blue-400/5 py-3 pl-4 pr-3 text-gray-300 [&>*:last-child]:mb-0">
                       {children}
