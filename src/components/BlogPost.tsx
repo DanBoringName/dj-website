@@ -10,6 +10,7 @@ import "katex/dist/katex.min.css";
 import { Link } from "react-router-dom";
 import Navbar from "../sections/Navbar";
 import SlideCarousel from "./SlideCarousel";
+import TableOfContents from "./TableOfContents";
 import { navLinks } from "../constants";
 
 type BlogPostProps = {
@@ -40,7 +41,9 @@ const BlogPost = ({ markdown, slug, loading, error }: BlogPostProps) => {
         {error && <p className="text-red-400">{error}</p>}
         {!loading && !error && (
           <section className="grid-container w-full max-w-full mx-auto">
-            <div className="text-white w-full">
+            <div className="relative mx-auto w-full max-w-3xl">
+              <TableOfContents markdown={markdown} />
+              <div className="blog-prose w-full">
               <ReactMarkdown
                 remarkPlugins={[remarkFrontmatter, remarkRemoveComments, remarkGfm, remarkMath]}
                 rehypePlugins={[rehypeRaw, rehypeSlug, rehypeKatex]}
@@ -65,9 +68,8 @@ const BlogPost = ({ markdown, slug, loading, error }: BlogPostProps) => {
                       {children}
                     </h4>
                   ),
-                  a: ({ children, href }) => {
-                    // In-page section jumps (e.g. #2-the-simplest-case) render as an obvious "jump" button.
-                    if (href?.startsWith("#")) {
+                  a: ({ children, href, title }) => {
+                    if (title === "button") {
                       return (
                         <a
                           href={href}
@@ -92,7 +94,7 @@ const BlogPost = ({ markdown, slug, loading, error }: BlogPostProps) => {
                       </a>
                     );
                   },
-                  p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+                  p: ({ children }) => <p className="mb-4">{children}</p>,
                   img: ({ src, alt }) => (
                     <img src={src} alt={alt} className="my-6 mx-auto block h-auto max-w-full rounded" />
                   ),
@@ -106,11 +108,38 @@ const BlogPost = ({ markdown, slug, loading, error }: BlogPostProps) => {
                       {children}
                     </aside>
                   ),
+                  div: ({ className, children }) => {
+                    if (className === "cols") {
+                      return <div className="my-4 grid grid-cols-1 gap-5 md:grid-cols-2">{children}</div>;
+                    }
+                    if (className === "col") {
+                      return (
+                        <div className="rounded-xl border border-blue-400/30 bg-blue-400/10 p-4 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+                          {children}
+                        </div>
+                      );
+                    }
+                    return <div className={className}>{children}</div>;
+                  },
                   ul: ({ children }) => <ul className="list-disc list-inside mb-4">{children}</ul>,
                   ol: ({ children }) => <ol className="list-decimal list-inside mb-4">{children}</ol>,
                   li: ({ children }) => <li className="mb-2 [&>p]:mb-0 [&>p]:inline">{children}</li>,
                   code: ({ children }) => <code className="bg-gray-800 px-2 py-1 rounded">{children}</code>,
                   pre: ({ children }) => <pre className="bg-gray-800 p-4 rounded mb-4 overflow-x-auto">{children}</pre>,
+                  table: ({ children }) => (
+                    <div className="my-6 overflow-x-auto">
+                      <table className="w-full border-collapse text-left text-base">{children}</table>
+                    </div>
+                  ),
+                  th: ({ children }) => (
+                    <th className="border border-gray-700 bg-blue-400/10 px-3 py-2 font-semibold text-blue-300 align-top">
+                      {children}
+                    </th>
+                  ),
+                  td: ({ children }) => (
+                    <td className="border border-gray-700 px-3 py-2 align-top [&>p]:mb-0">{children}</td>
+                  ),
+                  tr: ({ children }) => <tr className="even:bg-white/3">{children}</tr>,
                   details: ({ children }) => (
                     <details className="mb-4 border border-gray-700 rounded p-3">{children}</details>
                   ),
@@ -123,6 +152,7 @@ const BlogPost = ({ markdown, slug, loading, error }: BlogPostProps) => {
               >
                 {markdown}
               </ReactMarkdown>
+              </div>
             </div>
           </section>
         )}
