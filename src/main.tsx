@@ -7,6 +7,7 @@ import ErrorPage from "./ErrorPage";
 import Discordbot from "./routes/DiscordBot.tsx";
 import Home from "./routes/Home.tsx";
 import Blog from "./routes/Blog.tsx";
+import Tools from "./routes/Tools.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       },
       { path: "/discordbot", element: <Discordbot /> },
       { path: "/blog/:slug?", element: <Blog /> },
+      { path: "/tools", element: <Tools /> },
     ],
   },
 ]);
