@@ -2,7 +2,17 @@
 title: "How to derive Variational Free Energy: A Software Engineers Guide - Part 1"
 author: "Dan Corva"
 date: 2026-05-31
-tags: [tutorial, derivation, active-inference, variational-free-energy, bayesian-inference, predictive-coding, computational-neuroscience, python]
+tags:
+  [
+    tutorial,
+    derivation,
+    active-inference,
+    variational-free-energy,
+    bayesian-inference,
+    predictive-coding,
+    computational-neuroscience,
+    python,
+  ]
 math: true # enable KaTeX/MathJax
 toc: true # auto table of contents
 ---
@@ -196,7 +206,9 @@ That flipping is the tell. It's exactly what you'd expect from a system that rep
 
 This next bit is the pivot the whole derivation hinges on, so I'm going to lay it out slowly. Here's the logic, lightly paraphrased and then broken down:
 
-> We look for the value $\phi$ which maximises the posterior $p(\phi \mid u)$. By equation (4), that posterior depends on a ratio of two quantities, but the denominator $p(u)$ does not depend on $\phi$. Therefore the value of $\phi$ that maximises the posterior is the same value that maximises the **numerator**. We denote the logarithm of that numerator by $F$ (it's related to negative free energy, as we'll see).
+> We look for the value $\phi$ which maximises the posterior $p(\phi \mid u)$. By equation (4), that posterior depends on a ratio of two quantities, but the denominator $p(u)$ does not depend on $\phi$. Therefore the value of $\phi$ that maximises the posterior is the same value that maximises the **numerator**. We denote the logarithm of that numerator by $F$ (it
+
+'s related to negative free energy, as we'll see).
 
 Let me unpack that, because it's doing three separate clever things at once:
 
