@@ -32,6 +32,11 @@ export const navLinks = [
     name: "Blog",
     href: "/blog",
   },
+  {
+    id: 6,
+    name: "Tools",
+    href: "/tools",
+  },
 ];
 
 export const clientReviews = [{}, {}, {}, {}];

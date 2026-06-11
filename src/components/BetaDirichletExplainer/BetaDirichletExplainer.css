@@ -1,0 +1,129 @@
+.bd-explainer {
+  /* Violet accent on the site's near-black surfaces. */
+  --bd-accent: #a78bfa;
+  --bd-accent-strong: #c4b5fd;
+  --bd-accent-soft: rgba(167, 139, 250, 0.12);
+  --bd-ink: #f4f4f5;
+  --bd-muted: #afb0b6;
+  --bd-surface: #09090b;
+  --bd-card: #18181b;
+  --bd-border: rgba(255, 255, 255, 0.08);
+
+  font-family: "General Sans", sans-serif;
+  color: var(--bd-ink);
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+  background: var(--bd-surface);
+  border: 1px solid var(--bd-border);
+  border-radius: 0.75rem;
+}
+
+.bd-explainer h3 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 0 1.25rem;
+  color: var(--bd-accent-strong);
+}
+
+.bd-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 1.4rem;
+}
+
+@media (max-width: 520px) {
+  .bd-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bd-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bd-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bd-row label {
+  font-size: 0.8rem;
+  color: var(--bd-muted);
+  min-width: 92px;
+}
+
+.bd-row output {
+  font-size: 0.85rem;
+  font-weight: 500;
+  min-width: 30px;
+  text-align: right;
+  color: var(--bd-ink);
+}
+
+.bd-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--bd-accent);
+}
+
+.bd-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.bd-stat {
+  background: var(--bd-card);
+  border: 1px solid var(--bd-border);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+
+.bd-stat .lbl {
+  font-size: 0.72rem;
+  color: var(--bd-muted);
+}
+
+.bd-stat .val {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--bd-accent-strong);
+}
+
+.bd-chart-wrap {
+  position: relative;
+  height: 260px;
+  margin-bottom: 1rem;
+}
+
+.bd-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bd-presets button {
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: transparent;
+  color: var(--bd-accent-strong);
+  border: 1px solid var(--bd-border);
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: background 0.12s, border-color 0.12s, transform 0.05s;
+}
+
+.bd-presets button:hover {
+  background: var(--bd-accent-soft);
+  border-color: var(--bd-accent);
+}
+
+.bd-presets button:active {
+  transform: scale(0.98);
+}
