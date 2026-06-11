@@ -1,0 +1,24 @@
+{
+  "siteName": "Dan Elliott",
+  "siteUrl": "https://www.dj-elliott.com",
+  "author": "Dan Elliott",
+  "ogImage": "/assets/dj-elliott_website_logo.png",
+  "routes": {
+    "/": {
+      "title": "Dan Elliott — Software Engineer",
+      "description": "Portfolio and blog of Dan Elliott, a software engineer writing about active inference, computational neuroscience and the projects he is building."
+    },
+    "/blog": {
+      "title": "Blog — Dan Elliott",
+      "description": "Posts on active inference, variational free energy and the predictive brain, written from a software engineer's point of view."
+    },
+    "/tools": {
+      "title": "Tools — Dan Elliott",
+      "description": "Small interactive widgets for building intuition about the maths behind my notes and blog posts, including a Beta–Dirichlet distribution explainer."
+    },
+    "/discordbot": {
+      "title": "Discord Bot Dev Logs — Dan Elliott",
+      "description": "Development logs for my work-in-progress Discord bot."
+    }
+  }
+}

@@ -5,6 +5,8 @@ import BlogList from "../components/BlogList";
 import type { BlogPostMeta } from "../components/BlogList";
 import BlogPost from "../components/BlogPost";
 import { navLinks } from "../constants";
+import usePageMeta from "../components/usePageMeta";
+import pageMeta from "../constants/pageMeta.json";
 
 const Blog = () => {
   const { slug } = useParams();
@@ -12,6 +14,12 @@ const Blog = () => {
   const [posts, setPosts] = useState<BlogPostMeta[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const postHeading = slug ? markdown.match(/^#\s+(.+?)\s*$/m)?.[1] : undefined;
+  usePageMeta(
+    postHeading ? `${postHeading} — ${pageMeta.siteName}` : pageMeta.routes["/blog"].title,
+    slug ? undefined : pageMeta.routes["/blog"].description,
+  );
 
   useEffect(() => {
     setError("");

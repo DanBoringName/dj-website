@@ -1,8 +1,11 @@
 import { type NavLink } from "../constants";
 import DevLogs from "../sections/DevLogs";
 import Navbar from "../sections/Navbar";
+import usePageMeta from "../components/usePageMeta";
+import pageMeta from "../constants/pageMeta.json";
 
 const Discordbot = () => {
+  usePageMeta(pageMeta.routes["/discordbot"].title, pageMeta.routes["/discordbot"].description);
   //TODO: Rethink nav structure
   const navLinks: NavLink[] = [
     {
