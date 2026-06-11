@@ -60,17 +60,30 @@ const Projects = () => {
                 </div>
               ))}
             </div>
-            {currentProject.href && (
-              <a
-                className="flex items-center gap-2 cursor-pointer text-neutral-400 hover:text-white transition-colors"
-                href={currentProject.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p>Go to (WIP)</p>
-                <img src="/assets/arrow-up.png" className="w-3 h-3" alt="" aria-hidden="true" />
-              </a>
-            )}
+            <div className="flex items-center gap-5">
+              {currentProject.sourceHref && (
+                <a
+                  className="flex items-center gap-2 cursor-pointer text-neutral-400 hover:text-white transition-colors"
+                  href={currentProject.sourceHref}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p>Source on GitHub</p>
+                  <img src="/assets/arrow-up.png" className="w-3 h-3" alt="" aria-hidden="true" />
+                </a>
+              )}
+              {currentProject.href && (
+                <a
+                  className="flex items-center gap-2 cursor-pointer text-neutral-400 hover:text-white transition-colors"
+                  href={currentProject.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p>Go to (WIP)</p>
+                  <img src="/assets/arrow-up.png" className="w-3 h-3" alt="" aria-hidden="true" />
+                </a>
+              )}
+            </div>
           </div>
           <div className="flex justify-between items-center mt-auto">
             <button className="arrow-btn" onClick={() => handleNavigation("previous")} aria-label="Previous project">

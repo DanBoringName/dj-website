@@ -1,6 +1,6 @@
-# DJ Elliott Website
+# dj-elliott.com
 
-Personal website and portfolio showcasing my work as a DJ and developer. Visit the live site at [dj-elliott.com](https://dj-elliott.com/).
+Personal site and portfolio of Dan Elliott (D.J. Elliott) — a software engineer writing about Active Inference, variational free energy and the predictive brain from an engineering point of view. Visit the live site at [dj-elliott.com](https://dj-elliott.com/).
 
 ## 🚀 Quick Start
 
@@ -85,10 +85,6 @@ Deploy to production server:
 - Vite
 - Docker
 
-## 📝 License
-
-[MIT](LICENSE)
-
 ## 👤 Contact
 
-DJ Elliott - [Website](https://dj-elliott.com/)
+Dan Elliott — [dj-elliott.com](https://dj-elliott.com/)

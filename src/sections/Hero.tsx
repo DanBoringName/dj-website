@@ -20,7 +20,7 @@ const Hero = () => {
           Dan Elliott — A Software Engineer&apos;s Mind
         </h1>
         <p className="sm:text-lg text-base font-medium text-neutral-400 text-center font-sans">
-          Portfolio and blog website.
+          Physics-trained software engineer, translating Active Inference into something engineers can build with.
         </p>
         <div className="w-full h-full absolute inset-0">
           <Canvas className="w-full h-full">

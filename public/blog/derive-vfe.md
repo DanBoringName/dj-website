@@ -1,6 +1,6 @@
 ---
-title: "How to derive Variational Free Energy: A Software Engineers Guide - Part 1"
-author: "Dan Corva"
+title: "How to derive Variational Free Energy: A Software Engineer's Guide - Part 1"
+author: "Dan Elliott"
 date: 2026-05-31
 tags:
   [
@@ -17,7 +17,7 @@ math: true # enable KaTeX/MathJax
 toc: true # auto table of contents
 ---
 
-# How to derive Variational Free Energy: A Software Engineers Guide - Part 1.
+# How to derive Variational Free Energy: A Software Engineer's Guide - Part 1.
 
 [Skip my ramblings, this isn't some hippy cookbook.](#2-the-simplest-case "button")
 
@@ -39,7 +39,7 @@ In simpler terms: biological systems cannot directly measure how objectively sur
 
 </details>
 
-![Free energy F shown as surprise (−ln p(u)) plus a non-negative gap — the mismatch between the approximate belief q(v) and the true posterior p(v|u). Minimising F collapses the gap, sliding q onto p (inset), while dragging the whole stack down so surprise itself is minimised. Measured in nats, the natural-log cousin of bits.](../assets/vfe_surprise.gif)
+![Free energy F shown as surprise (−ln p(u)) plus a non-negative gap — the mismatch between the approximate belief q(v) and the true posterior p(v|u). Minimising F collapses the gap, sliding q onto p (inset), while dragging the whole stack down so surprise itself is minimised. Measured in nats, the natural-log cousin of bits.](/assets/vfe_surprise.gif)
 
 > In this derivation we actually **maximise negative VFE** instead of the classic literature move of **minimising positive VFE**. They are approximately identical for the contents of this post.
 
@@ -151,7 +151,7 @@ Maximise $F$, find your best guess. If your head hurts, don't worry, mine did to
 
 To make "the peak of the posterior" concrete, here's that curve actually plotted — the exact posterior $p(v \mid u)$ for the food-size example, computed by solving [Bogacz Exercise 1](#appendix-b--bogacz-exercises) ([Python in Appendix C](#appendix-c---python-solutions-to-bogacz-exercises)). This is the whole target: the single value of $v$ sitting under the peak is $\phi$, our best-guess size, and everything from here on is about reaching that peak _without_ computing the whole curve.
 
-![The exact posterior p(v | u) for the food-size example, plotted as a bell-shaped curve peaking near v = 1.6. The location of this peak is φ, the best-guess size we chase throughout the post.](../assets/bogacz-exc1.png)
+![The exact posterior p(v | u) for the food-size example, plotted as a bell-shaped curve peaking near v = 1.6. The location of this peak is φ, the best-guess size we chase throughout the post.](/assets/bogacz-exc1.png)
 
 ### 2.3 Derivation
 
@@ -192,13 +192,13 @@ Extra: Binocular rivalry
 
 Here's a rundown of the experiment. You show each eye a _different_ image, say, vertical stripes to the left eye and horizontal stripes to the right eye, at the same time. Crucially, the two images cannot both be true of the same patch of the world. Your brain is now stuck with contradictory evidence and has to make sense of it.
 
-![Each eye is shown a different, incompatible image, and the brain has to pick one interpretation.](../assets/binocular_rivalry_setup.svg)
+![Each eye is shown a different, incompatible image, and the brain has to pick one interpretation.](/assets/binocular_rivalry_setup.svg)
 
 Now, if your brain were tracking the _full distribution_ you'd expect to perceive some sensible average of the two. A blurry grey chequerboard.
 
 **That is not what happens**. What people actually report is that perception _flips_. For a few seconds you see only the vertical stripes, then (without doing anything) it switches and you see only the horizontal stripes, then back again, continuously. You never see the averaged image. Your brain literally picks a winner, commits to it fully, then changes its mind.
 
-![Perception alternates between one image and the other over time, and never settles on a blended average.](../assets/rivalry_flips_not_blends.svg)
+![Perception alternates between one image and the other over time, and never settles on a blended average.](/assets/rivalry_flips_not_blends.svg)
 
 That flipping is the tell. It's exactly what you'd expect from a system that represents the single _most likely_ interpretation rather than the whole probability distribution. When the evidence is genuinely ambiguous, there are two roughly-equally-good "best guesses", and the brain ping-pongs between them. It only ever holds _one at a time_.
 
@@ -317,7 +317,7 @@ $$
 
 In English this means "let your guess $\phi$ change over time at the rate of the gradient". If $F$ slopes upwards at your current guess, $\dot\phi$ is positive and $\phi$ moves in the upward direction. At the peak, $\frac{\partial F}{\partial\phi} = 0$, so $\dot\phi = 0$, and the guess stops moving. It's settled on the best estimate.
 
-![A ball climbing the free-energy curve via gradient ascent: it moves fast where the slope is steep, slows as the gradient flattens, and comes to rest at the peak where ∂F/∂φ = 0.](../assets/gradient_ascent.gif)
+![A ball climbing the free-energy curve via gradient ascent: it moves fast where the slope is steep, slows as the gradient flattens, and comes to rest at the peak where ∂F/∂φ = 0.](/assets/gradient_ascent.gif)
 
 > **Worth flagging:** this is gradient _ascent_, not descent — notice there's no minus sign. But hang on, doesn't everyone bang on about _minimising_ free energy? They do, and there's no contradiction; it's a naming mismatch that we addressed in an earlier paragraph. The quantity we've been building, $F$, came straight out of logging the _numerator_ of Bayes' rule, so it's a goodness score we want to push _up_ (most probable guess = top of the hill). The free energy the literature tells you to minimise is defined the other way up, as a proxy for _surprise_, which you obviously want _down_. The two are just negatives of each other: $F_{\text{literature}} \approx -F_{\text{ours}}$. Climbing our hill _is_ descending their valley. Bogacz didn't flip his terms to match the convention because his derivation hands him this version for free; negating everything by hand just to agree with a sign convention would've added minus signs to every equation that follows, for zero benefit. So: we ascend, and we call it negative free energy to keep our consciences clear.
 

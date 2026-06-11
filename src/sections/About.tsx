@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import TechWheel from "../components/TechWheel";
 import BlogPreview from "../components/BlogPreview";
 import DevLogs from "./DevLogs";
@@ -12,9 +13,17 @@ const About = () => {
             <div>
               <p className="grid-headtext">Hi, I&apos;m Dan</p>
               <p className="grid-subtext">
-                With 2 1/2 years of coding experience, I finally decided to crack on with making my own site with a
-                focus on something animated & 3D
+                I&apos;m a software engineer with a physics and maths background — my dissertation solved
+                Einstein&apos;s field equations to compute black-hole orbits, which is why one is floating above. These
+                days I build Active Inference agents with pymdp and JAX, and write about the maths in plain engineering
+                terms.
               </p>
+              <Link
+                to="/blog/derive-vfe"
+                className="grid-subtext mt-3 inline-block text-blue-300 hover:text-blue-200 transition-colors"
+              >
+                Start here: deriving Variational Free Energy →
+              </Link>
             </div>
           </div>
         </div>
