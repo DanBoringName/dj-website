@@ -4,7 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/dj-elliott_website_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DJ Website</title>
+    <!-- seo:start — this block is replaced per-route by scripts/prerender.mjs -->
+    <title>Dan Elliott — Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio and blog of Dan Elliott, a software engineer writing about active inference, computational neuroscience and the projects he is building."
+    />
+    <link rel="canonical" href="https://www.dj-elliott.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dan Elliott" />
+    <meta property="og:title" content="Dan Elliott — Software Engineer" />
+    <meta
+      property="og:description"
+      content="Portfolio and blog of Dan Elliott, a software engineer writing about active inference, computational neuroscience and the projects he is building."
+    />
+    <meta property="og:url" content="https://www.dj-elliott.com/" />
+    <meta property="og:image" content="https://www.dj-elliott.com/assets/dj-elliott_website_logo.png" />
+    <meta name="twitter:card" content="summary" />
+    <!-- seo:end -->
     <script>
       // Restore the path the 404.html redirect encoded as a query string,
       // so deep links like /blog/foo work on GitHub Pages.
@@ -18,11 +35,7 @@
               return s.replace(/~and~/g, "&");
             })
             .join("?");
-          window.history.replaceState(
-            null,
-            "",
-            l.pathname.slice(0, -1) + decoded + l.hash,
-          );
+          window.history.replaceState(null, "", l.pathname.slice(0, -1) + decoded + l.hash);
         }
       })();
     </script>

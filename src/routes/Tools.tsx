@@ -1,8 +1,11 @@
 import Navbar from "../sections/Navbar";
 import { navLinks } from "../constants";
 import BetaDirichletExplainer from "../components/BetaDirichletExplainer";
+import usePageMeta from "../components/usePageMeta";
+import pageMeta from "../constants/pageMeta.json";
 
 const Tools = () => {
+  usePageMeta(pageMeta.routes["/tools"].title, pageMeta.routes["/tools"].description);
   return (
     <>
       <Navbar navLinks={navLinks} />

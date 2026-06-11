@@ -16,10 +16,12 @@ const Hero = () => {
   return (
     <section className="min-h-screen w-full flex flex-col relative" id="home">
       <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
-        <p className="sm:text-3xl text-xl font-medium text-white text-center font-sans">
-          This is the best website...in the world! <span className="waving-hand">👋</span>
+        <h1 className="sm:text-4xl text-2xl font-bold text-white text-center font-sans">
+          Dan Elliott — A Software Engineer&apos;s Mind
+        </h1>
+        <p className="sm:text-lg text-base font-medium text-neutral-400 text-center font-sans">
+          Portfolio and blog website.
         </p>
-        <p className="hero_tag text-gray_gradient">Building in progress...</p>
         <div className="w-full h-full absolute inset-0">
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
