@@ -27,6 +27,12 @@ const slideDecks: Record<string, { basePath: string; count: number; title: strin
     title: "Active Inference Presentation",
     description: "Navigate the exported slides below.",
   },
+  "active-inference-part-2": {
+    basePath: "/blog/presentations/Math_and_Meat_Active_Inference_pt2",
+    count: 26,
+    title: "Active Inference, Part 2 Presentation",
+    description: "Navigate the exported slides below.",
+  },
 };
 
 const BlogPost = ({ markdown, slug, loading, error }: BlogPostProps) => {
