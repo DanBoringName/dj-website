@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/DanBoringName/dj-website/compare/v0.2.0...v0.2.0) (2026-06-13)
+
+
+### Bug Fixes
+
+* **blog:** tidied up the title and added a scope paragraph. ([5d2b4c2](https://github.com/DanBoringName/dj-website/commit/5d2b4c2e8df8a4cada9e716a213ed62d4cfc56cd))
+
 ## [0.2.0](https://github.com/DanBoringName/dj-website/compare/v0.1.0...v0.2.0) (2026-06-11)
 
 
