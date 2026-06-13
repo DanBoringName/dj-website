@@ -19,6 +19,15 @@ toc: true # auto table of contents
 
 # How to derive Variational Free Energy: A Software Engineer's Guide - Part 1.
 
+### The static case: one observation, one hidden cause.
+
+> **Scope:** This derives the simplest case from Bogacz (2017): inferring a single
+> fixed quantity from a single observation, with a linear-Gaussian model and fixed
+> precisions. No dynamics, no time, no action yet — those will come later in the series.
+> (For the mathematically inclined: this is the Laplace-approximated free energy,
+> where the approximate posterior collapses to a point estimate — which is why the
+> KL/entropy term you may have seen elsewhere doesn't appear here.)
+
 [Skip my ramblings, this isn't some hippy cookbook.](#2-the-simplest-case "button")
 
 ## 1. Introduction
