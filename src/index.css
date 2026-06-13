@@ -25,6 +25,34 @@ body {
   color: #e6e4df;
 }
 
+.blog-prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(96, 165, 250, 0.35) transparent;
+}
+
+.blog-prose .katex-display::-webkit-scrollbar {
+  height: 6px;
+}
+.blog-prose .katex-display::-webkit-scrollbar-track {
+  background: transparent;
+}
+.blog-prose .katex-display::-webkit-scrollbar-thumb {
+  background-color: rgba(96, 165, 250, 0.3);
+  border-radius: 9999px;
+}
+.blog-prose .katex-display:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(96, 165, 250, 0.5);
+}
+
+@media (max-width: 640px) {
+  .blog-prose .katex {
+    font-size: 1.05em;
+  }
+}
+
 @utility text-gray_gradient {
   @apply bg-linear-to-r/srgb from-stone-200 from-60% to-gray-400 to-100% bg-clip-text text-transparent;
 }
