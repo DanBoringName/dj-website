@@ -33,6 +33,7 @@ export type Project = {
   desc: string;
   subdesc: string;
   href: string;
+  hrefLabel?: string;
   sourceHref?: string;
   texture?: string;
   logo?: string;
@@ -62,14 +63,15 @@ export const myProjects: Project[] = [
     isLive: true,
   },
   {
-    title: "Active Inference agents (cpomdp)",
+    title: "cpomdp — continuous active inference",
     desc: "Continuous active inference for Python — the continuous-state sibling of pymdp.",
     subdesc:
-      "Two JAX-based agents that infer their own positions in continuous and discrete space respectively. pymdp is brilliant for discrete models but has no continuous generative models; this is the groundwork for building them, written up step by step in the blog series.",
-    href: "",
+      "pymdp is brilliant for discrete models but has no continuous generative models. cpomdp fills that gap: hand it a linear-Gaussian model of how the world moves and what you can see of it, and you get an agent that perceives by Kalman filtering and acts by steady-state LQR, through the same infer_states / sample_action loop pymdp users already know. v0.1.1, pre-alpha and solo-built — the maths is checked against an independent oracle, but the API can still shift before v1.0. Docs are the best place to start.",
+    href: "https://danboringname.github.io/cpomdp/",
+    hrefLabel: "Read the docs",
     sourceHref: "https://github.com/DanBoringName/cpomdp",
     spotlight: "/assets/spotlight2.png",
-    tags: [],
+    tags: [{ path: "/assets/python.svg", name: "Python" }],
   },
   {
     title: "Hestia",

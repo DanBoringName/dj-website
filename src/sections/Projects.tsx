@@ -79,7 +79,7 @@ const Projects = () => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <p>Go to (WIP)</p>
+                  <p>{currentProject.hrefLabel ?? "Go to (WIP)"}</p>
                   <img src="/assets/arrow-up.png" className="w-3 h-3" alt="" aria-hidden="true" />
                 </a>
               )}
