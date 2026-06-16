@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0](https://github.com/DanBoringName/dj-website/compare/v0.2.0...v0.2.0) (2026-06-16)
+
+
+### Features
+
+* added cpomdp to projects and tools ([09ff3c9](https://github.com/DanBoringName/dj-website/commit/09ff3c9571a96c30dd755293f8cb833fc093f13c))
+* added cpomdp to projects and tools ([14bff02](https://github.com/DanBoringName/dj-website/commit/14bff026c2b3793e79194968fa7408d3afc8cdb8))
+
+
+### Bug Fixes
+
+* **blog:** tidied up the title and added a scope paragraph. ([5d2b4c2](https://github.com/DanBoringName/dj-website/commit/5d2b4c2e8df8a4cada9e716a213ed62d4cfc56cd))
+
 ## [0.2.0](https://github.com/DanBoringName/dj-website/compare/v0.2.0...v0.2.0) (2026-06-13)
 
 
