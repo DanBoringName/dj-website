@@ -6,7 +6,7 @@
   "routes": {
     "/": {
       "title": "Dan Elliott — Software Engineer",
-      "description": "Portfolio and blog of Dan Elliott, a software engineer writing about active inference, computational neuroscience and the projects he is building."
+      "description": "Portfolio, publications and blog of Dan Elliott, a software engineer writing about active inference, computational neuroscience and the projects he is building."
     },
     "/blog": {
       "title": "Blog — Dan Elliott",

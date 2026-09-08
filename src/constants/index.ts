@@ -22,6 +22,11 @@ export const navLinks = [
     name: "Tools",
     href: "/tools",
   },
+  {
+    id: 4,
+    name: "Publications",
+    href: "/#publications",
+  },
 ];
 
 export const clientReviews = [{}, {}, {}, {}];
