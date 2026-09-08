@@ -51,6 +51,13 @@ const Projects = () => {
             <p className="text-white text-2xl font-semibold animatedText">{currentProject.title}</p>
             {currentProject.desc && <p className="animatedText text-[#afb0b6]">{currentProject.desc}</p>}
             {currentProject.subdesc && <p className="animatedText text-[#afb0b6]">{currentProject.subdesc}</p>}
+            {currentProject.features && (
+              <ul className="animatedText list-disc pl-5 flex flex-col gap-1.5 text-sm text-[#afb0b6]">
+                {currentProject.features.map((feature) => (
+                  <li key={feature}>{feature}</li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
