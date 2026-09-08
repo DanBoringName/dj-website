@@ -101,6 +101,31 @@ export const myProjects: Project[] = [
   },
 ];
 
+export type Publication = {
+  title: string;
+  venue: string;
+  year: number;
+  /** One or two sentences on what the paper shows, in plain terms. */
+  summary: string;
+  arxivId: string;
+  doi: string;
+  /** Optional link to the project the paper underpins. */
+  related?: { label: string; href: string };
+};
+
+export const publications: Publication[] = [
+  {
+    title: "State-dependent observation noise reintroduces epistemic value in linear-Gaussian active inference",
+    venue: "arXiv preprint, q-bio.NC",
+    year: 2026,
+    summary:
+      "In the textbook linear-Gaussian setting an active inference agent cannot be curious: the information-seeking part of expected free energy works out the same for every plan, so it never changes a decision. This paper shows that letting the sensor noise depend on where the agent is, while keeping everything else linear, is enough to bring that term back to life. Curiosity returns in a regime where it had been proved away, and the result is what cpomdp is built on.",
+    arxivId: "2607.20306",
+    doi: "10.48550/arXiv.2607.20306",
+    related: { label: "Implemented in cpomdp", href: "https://cpomdp.inferogenesis.com/" },
+  },
+];
+
 export const calculateSizes = (isSmall: boolean, isMobile: boolean, isTablet: boolean) => {
   return {
     blackholeScale: isSmall ? 1 : isMobile ? 2.5 : 5,
