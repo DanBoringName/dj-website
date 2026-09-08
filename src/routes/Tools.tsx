@@ -32,15 +32,15 @@ const Tools = () => {
             <div className="flex flex-col gap-4 font-sans">
               <h2 className="text-2xl font-bold text-white">cpomdp</h2>
               <p className="text-[#afb0b6]">
-                Continuous active inference for Python — the continuous-state sibling of pymdp. Hand it a linear-Gaussian
-                model of how the world moves and what you can see of it, and you get an agent that perceives by Kalman
-                filtering and acts by steady-state LQR, through the familiar <code>infer_states</code> /{" "}
-                <code>sample_action</code> loop. v0.1.1, pre-alpha and solo-built.
+                Continuous active inference for Python — the continuous-state sibling of pymdp. Hand it a
+                linear-Gaussian model of how the world moves and what you can see of it, and you get an agent that
+                perceives by Kalman filtering and acts by steady-state LQR, through the familiar{" "}
+                <code>infer_states</code> / <code>sample_action</code> loop. v0.4.4, pre-alpha and solo-built.
               </p>
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                 <a
                   className="flex items-center gap-2 text-white hover:text-[#afb0b6] transition-colors"
-                  href="https://danboringname.github.io/cpomdp/"
+                  href="https://cpomdp.inferogenesis.com/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -49,7 +49,7 @@ const Tools = () => {
                 </a>
                 <a
                   className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors"
-                  href="https://github.com/DanBoringName/cpomdp"
+                  href="https://github.com/inferogenesis/cpomdp"
                   target="_blank"
                   rel="noreferrer"
                 >

@@ -72,6 +72,17 @@ const Projects = () => {
                   <img src="/assets/arrow-up.png" className="w-3 h-3" alt="" aria-hidden="true" />
                 </a>
               )}
+              {currentProject.packageHref && (
+                <a
+                  className="flex items-center gap-2 cursor-pointer text-neutral-400 hover:text-white transition-colors"
+                  href={currentProject.packageHref}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <p>{currentProject.packageLabel ?? "Package"}</p>
+                  <img src="/assets/arrow-up.png" className="w-3 h-3" alt="" aria-hidden="true" />
+                </a>
+              )}
               {currentProject.href && (
                 <a
                   className="flex items-center gap-2 cursor-pointer text-neutral-400 hover:text-white transition-colors"
