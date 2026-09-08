@@ -41,6 +41,8 @@ export type Project = {
   logo?: string;
   logoStyle?: Record<string, string>;
   spotlight?: string;
+  /** Plain-English bullet points shown under the description. */
+  features?: string[];
   tags: ProjectTag[];
   isLive?: boolean;
 };
@@ -68,7 +70,20 @@ export const myProjects: Project[] = [
     title: "cpomdp — continuous active inference",
     desc: "Continuous active inference for Python — the continuous-state sibling of pymdp.",
     subdesc:
-      "pymdp is brilliant for discrete models but has no continuous generative models. cpomdp fills that gap: hand it a linear-Gaussian model of how the world moves and what you can see of it, and you get an agent that perceives by Kalman filtering and acts by steady-state LQR, through the same infer_states / sample_action loop pymdp users already know. v0.4.4, pre-alpha and solo-built — the maths is checked against an independent oracle, but the API can still shift before v1.0. Docs are the best place to start.",
+      "pymdp is brilliant for discrete models but has nothing for continuous ones. cpomdp fills that gap: describe how the world moves and what you can see of it, and you get an agent that works out where things are and what to do about it, through the same infer_states / sample_action loop pymdp users already know. v0.4.4, pre-alpha and solo-built. In plain terms, it can:",
+    features: [
+      "Track continuous things. Positions, velocities, temperatures - quantities that don't come in neat categories.",
+      "Perceive exactly. Observations are folded in with a Kalman filter, so there is no sampling and no approximation to tune.",
+      "Reach a goal. Give it a target and it steers there with the provably best action for a linear-Gaussian world (LQR).",
+      "Be curious. Sensors and dynamics whose noise depends on where you are, so the agent is drawn towards places it can see more clearly - something the textbook linear-Gaussian model rules out.",
+      "Plan ahead. Expected free energy over multi-step horizons, plus an exhaustive search over every plan that hands back a certificate saying it checked them all.",
+      "Just watch. Leave out the controls and it becomes a pure tracker.",
+      "Handle branching worlds. Coupling graphs for hidden contexts that a single flat filter can't represent.",
+      "Check itself. Probe whether a sensor actually earns its keep, and confirm a rollout stayed numerically well conditioned.",
+      "Swap engines. A fast JAX backend by default, and an optional Julia (RxInfer) backend used as an independent oracle to check the maths.",
+      "Feel like pymdp. Same Agent, qs, infer_states and sample_action names, so existing code translates almost line for line.",
+      "Be trusted. Fully typed, documented with guides and an examples gallery, tested on Python 3.11 to 3.14 in CI, Zenodo DOI, MIT licensed.",
+    ],
     href: "https://cpomdp.inferogenesis.com/",
     hrefLabel: "Read the docs",
     sourceHref: "https://github.com/inferogenesis/cpomdp",
