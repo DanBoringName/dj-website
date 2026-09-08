@@ -74,6 +74,7 @@ export const myProjects: Project[] = [
     sourceHref: "https://github.com/inferogenesis/cpomdp",
     packageHref: "https://pypi.org/project/cpomdp/",
     packageLabel: "cpomdp on PyPI",
+    texture: "/textures/project/cpomdp_bacillus.mp4",
     spotlight: "/assets/spotlight2.png",
     tags: [{ path: "/assets/python.svg", name: "Python" }],
   },
