@@ -5,7 +5,7 @@
   "ogImage": "/assets/dj-elliott_website_logo.png",
   "routes": {
     "/": {
-      "title": "Dan Elliott — Software Engineer",
+      "title": "Dan Corva — Research Software Engineer",
       "description": "Portfolio, publications and blog of Dan Elliott, a software engineer writing about active inference, computational neuroscience and the projects he is building."
     },
     "/blog": {
