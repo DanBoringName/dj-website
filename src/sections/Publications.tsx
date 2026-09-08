@@ -29,6 +29,7 @@ const Publications = () => {
                 {paper.venue} · {paper.year}
               </p>
               <h3 className="text-white text-2xl font-semibold mt-2">{paper.title}</h3>
+              <p className="text-neutral-400 mt-1">{paper.authors}</p>
             </div>
             <p className="text-[#afb0b6]">{paper.summary}</p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2">

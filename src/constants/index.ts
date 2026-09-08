@@ -108,6 +108,7 @@ export const myProjects: Project[] = [
 
 export type Publication = {
   title: string;
+  authors: string;
   venue: string;
   year: number;
   /** One or two sentences on what the paper shows, in plain terms. */
@@ -121,6 +122,7 @@ export type Publication = {
 export const publications: Publication[] = [
   {
     title: "State-dependent observation noise reintroduces epistemic value in linear-Gaussian active inference",
+    authors: "Dan Corva",
     venue: "arXiv preprint, q-bio.NC",
     year: 2026,
     summary:
