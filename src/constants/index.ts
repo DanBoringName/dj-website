@@ -35,6 +35,8 @@ export type Project = {
   href: string;
   hrefLabel?: string;
   sourceHref?: string;
+  packageHref?: string;
+  packageLabel?: string;
   texture?: string;
   logo?: string;
   logoStyle?: Record<string, string>;
@@ -70,6 +72,8 @@ export const myProjects: Project[] = [
     href: "https://danboringname.github.io/cpomdp/",
     hrefLabel: "Read the docs",
     sourceHref: "https://github.com/DanBoringName/cpomdp",
+    packageHref: "https://pypi.org/project/cpomdp/",
+    packageLabel: "cpomdp on PyPI",
     spotlight: "/assets/spotlight2.png",
     tags: [{ path: "/assets/python.svg", name: "Python" }],
   },
