@@ -29,7 +29,56 @@ const technologies: Technology[] = [
     name: "Python",
     slug: "python",
     description:
-      "Python has always been my backend go to, a quick language to template and prototype. Python and I have our difference, I largely hate it if I'm being honest, but that comes from its flexible nature and the miraculous ways people many to hold a project up with duct tape, itching to fall over. I am currently using Python to build an Active Inference Passive Observer Markov Decision Process (POMDP) and have previously trained smaller conventional aI models using reinforcement learning and my personal hardware. If I ever build a backend for this website it will most likely be in Python",
+      "Python has always been my backend go to, a quick language to template and prototype. Python and I have our differences, I largely hate it if I'm being honest, but that comes from its flexible nature and the miraculous ways people manage to hold a project up with duct tape, itching to fall over. It is also what cpomdp, my continuous active inference library, is written in, and I have previously trained smaller conventional AI models using reinforcement learning on my personal hardware. If I ever build a backend for this website it will most likely be in Python.",
+  },
+  {
+    name: "JAX",
+    slug: "jax",
+    iconUrl: "/assets/jax.svg",
+    description:
+      "The numerical engine under cpomdp. Every Kalman update, LQR solve and expected-free-energy rollout is written against jax.numpy so it is JIT-compiled and differentiable, with jaxtyping pinning the array shapes at the type level.",
+  },
+  {
+    name: "Julia",
+    slug: "julia",
+    description:
+      "cpomdp ships an optional RxInfer backend that re-derives every answer through Julia's message-passing machinery. It exists so the fast JAX path has an independent oracle to be checked against, and the test suite leans on it for exactly that.",
+  },
+  {
+    name: "NumPy",
+    slug: "numpy",
+    description:
+      "The lingua franca of scientific Python. cpomdp accepts plain NumPy arrays at its boundary, and the analytic NumPy oracles in its tests are the second line of defence after Julia.",
+  },
+  {
+    name: "uv",
+    slug: "uv",
+    description:
+      "Astral's package manager runs cpomdp's whole workflow: a single lockfile, a workspace with the sibling warrantlib package, and locked syncs in every CI job so the environment cannot drift.",
+  },
+  {
+    name: "Ruff",
+    slug: "ruff",
+    description:
+      "Linting and formatting for cpomdp, wired in through pre-commit alongside ty for strict type checking. Docstrings on the whole public API are enforced by rule rather than by good intentions.",
+  },
+  {
+    name: "pytest",
+    slug: "pytest",
+    description:
+      "cpomdp's test suite, with a coverage gate, a matrix across Python 3.11 to 3.14, and a separate job that only runs against the Julia oracle. The headline numbers in the README are asserted by tests on every merge.",
+  },
+  {
+    name: "MkDocs",
+    slug: "materialformkdocs",
+    description:
+      "cpomdp's documentation site is Material for MkDocs with mkdocstrings generating the API reference straight from the docstrings. Built with --strict in CI so a broken link fails the build.",
+  },
+  {
+    name: "GitHub Actions",
+    slug: "githubactions",
+    description:
+      "CI and CD for this site and for cpomdp: lint, type checks, docs build, the test matrix, the Julia oracle, and release-please for versioned releases.",
   },
   {
     name: "FastAPI",
@@ -99,8 +148,8 @@ const technologies: Technology[] = [
   },
 ];
 
-const RADIUS = 100;
-const ICON_BUTTON_SIZE = 40;
+const RADIUS = 140;
+const ICON_BUTTON_SIZE = 36;
 const ANGLE_STEP = 360 / technologies.length;
 
 const TechWheel = () => {
@@ -123,7 +172,7 @@ const TechWheel = () => {
 
   return (
     <div className="flex flex-col md:flex-row items-center md:items-stretch gap-6 md:gap-8">
-      <div className="relative w-full max-w-[260px] aspect-square shrink-0">
+      <div className="relative w-full max-w-[330px] aspect-square shrink-0">
         {technologies.map((tech, i) => {
           const totalAngle = i * ANGLE_STEP + rotation;
           const isSelected = i === selectedIndex;
