@@ -68,7 +68,7 @@ export const myProjects: Project[] = [
     title: "cpomdp — continuous active inference",
     desc: "Continuous active inference for Python — the continuous-state sibling of pymdp.",
     subdesc:
-      "pymdp is brilliant for discrete models but has no continuous generative models. cpomdp fills that gap: hand it a linear-Gaussian model of how the world moves and what you can see of it, and you get an agent that perceives by Kalman filtering and acts by steady-state LQR, through the same infer_states / sample_action loop pymdp users already know. v0.1.1, pre-alpha and solo-built — the maths is checked against an independent oracle, but the API can still shift before v1.0. Docs are the best place to start.",
+      "pymdp is brilliant for discrete models but has no continuous generative models. cpomdp fills that gap: hand it a linear-Gaussian model of how the world moves and what you can see of it, and you get an agent that perceives by Kalman filtering and acts by steady-state LQR, through the same infer_states / sample_action loop pymdp users already know. v0.4.4, pre-alpha and solo-built — the maths is checked against an independent oracle, but the API can still shift before v1.0. Docs are the best place to start.",
     href: "https://danboringname.github.io/cpomdp/",
     hrefLabel: "Read the docs",
     sourceHref: "https://github.com/DanBoringName/cpomdp",

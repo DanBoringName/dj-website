@@ -35,7 +35,7 @@ const Tools = () => {
                 Continuous active inference for Python — the continuous-state sibling of pymdp. Hand it a linear-Gaussian
                 model of how the world moves and what you can see of it, and you get an agent that perceives by Kalman
                 filtering and acts by steady-state LQR, through the familiar <code>infer_states</code> /{" "}
-                <code>sample_action</code> loop. v0.1.1, pre-alpha and solo-built.
+                <code>sample_action</code> loop. v0.4.4, pre-alpha and solo-built.
               </p>
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                 <a
