@@ -1,6 +1,6 @@
 ---
 title: "How to derive Variational Free Energy: A Software Engineer's Guide - Part 1"
-author: "Dan Elliott"
+author: "Dan Corva"
 date: 2026-05-31
 tags:
   [

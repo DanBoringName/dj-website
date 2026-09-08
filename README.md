@@ -1,6 +1,6 @@
 # dj-elliott.com
 
-Personal site and portfolio of Dan Elliott (D.J. Elliott) — a software engineer writing about Active Inference, variational free energy and the predictive brain from an engineering point of view. Visit the live site at [dj-elliott.com](https://dj-elliott.com/).
+Personal site and portfolio of Dan Corva — a software engineer writing about Active Inference, variational free energy and the predictive brain from an engineering point of view. Visit the live site at [dj-elliott.com](https://dj-elliott.com/).
 
 ## 🚀 Quick Start
 
