@@ -40,7 +40,7 @@ const Tools = () => {
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                 <a
                   className="flex items-center gap-2 text-white hover:text-[#afb0b6] transition-colors"
-                  href="https://danboringname.github.io/cpomdp/"
+                  href="https://cpomdp.inferogenesis.com/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -49,7 +49,7 @@ const Tools = () => {
                 </a>
                 <a
                   className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors"
-                  href="https://github.com/DanBoringName/cpomdp"
+                  href="https://github.com/inferogenesis/cpomdp"
                   target="_blank"
                   rel="noreferrer"
                 >
