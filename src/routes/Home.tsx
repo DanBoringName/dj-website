@@ -3,6 +3,7 @@ import Hero from "../sections/Hero";
 import Navbar from "../sections/Navbar";
 import { navLinks } from "../constants";
 import Projects from "../sections/Projects";
+import Publications from "../sections/Publications";
 import usePageMeta from "../components/usePageMeta";
 import pageMeta from "../constants/pageMeta.json";
 
@@ -14,6 +15,7 @@ const Home = () => {
       <Hero />
       <About />
       <Projects />
+      <Publications />
     </>
   );
 };
