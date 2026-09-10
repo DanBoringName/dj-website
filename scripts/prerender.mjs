@@ -206,9 +206,10 @@ if (!template.includes(rootPattern)) {
 }
 
 for (const route of routes) {
+  const body = await bodyFor(route);
   const html = template
-    .replace(seoPattern, seoBlock(route))
-    .replace(rootPattern, `<div id="root">${snapshot(await bodyFor(route))}</div>`);
+    .replace(seoPattern, () => seoBlock(route))
+    .replace(rootPattern, () => `<div id="root">${snapshot(body)}</div>`);
   if (route.path === "/") {
     writeFileSync(join(dist, "index.html"), html);
     continue;
