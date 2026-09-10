@@ -113,6 +113,7 @@ export const myProjects: Project[] = [
     href: "https://pypi.org/project/warrantlib/",
     hrefLabel: "warrantlib on PyPI",
     sourceHref: "https://github.com/inferogenesis/cpomdp/tree/main/packages/warrantlib",
+    texture: "/textures/project/warrantlib_terms.png",
     spotlight: "/assets/spotlight1.png",
     tags: [{ path: "/assets/python.svg", name: "Python" }],
   },
