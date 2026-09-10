@@ -1,5 +1,45 @@
 # Changelog
 
+## [0.3.0](https://github.com/DanBoringName/dj-website/compare/v0.2.0...v0.3.0) (2026-09-10)
+
+
+### Features
+
+* **about:** add the cpomdp stack to the tech wheel ([b0139b0](https://github.com/DanBoringName/dj-website/commit/b0139b021dd40dbd017a7a3c9c84bfa164a1d287))
+* add a Publications section and retitle the main page to Dan Corva ([07617a1](https://github.com/DanBoringName/dj-website/commit/07617a1b981bdcad7398954d835a2ff3ba00d851))
+* added cpomdp to projects and tools ([09ff3c9](https://github.com/DanBoringName/dj-website/commit/09ff3c9571a96c30dd755293f8cb833fc093f13c))
+* added cpomdp to projects and tools ([14bff02](https://github.com/DanBoringName/dj-website/commit/14bff026c2b3793e79194968fa7408d3afc8cdb8))
+* cpomdp showcase — feature list, bacillus demo on the monitor, tech wheel ([b62929b](https://github.com/DanBoringName/dj-website/commit/b62929b5ff24d5567b8572cb5157ac136fca0756))
+* **hero:** reword the subtitle ([78e686e](https://github.com/DanBoringName/dj-website/commit/78e686e400b6c888798621f430e2ea7bf6551925))
+* **hero:** reword the subtitle to what I actually do ([4f3c436](https://github.com/DanBoringName/dj-website/commit/4f3c436011a97f494c87b4de3f348508f4dbe90d))
+* **home:** match the fallback index.html title to the new main page title ([de5cdbe](https://github.com/DanBoringName/dj-website/commit/de5cdbe1352599c92c63213529f0e60292d41d3a))
+* **home:** retitle the main page to Dan Corva — Research Software Engineer ([a4a0bba](https://github.com/DanBoringName/dj-website/commit/a4a0bba10c2209f1706813087b3ec422c195678b))
+* **home:** show Publications below Projects and link it from the nav ([dac6e5e](https://github.com/DanBoringName/dj-website/commit/dac6e5e079dde22379907b84999ee1dea97eff81))
+* **projects:** add warrantlib as a project ([b696ae7](https://github.com/DanBoringName/dj-website/commit/b696ae787b20a4cba8903eb264e58bad73968099))
+* **projects:** add warrantlib with its terms table on the monitor, drop Hestia, align description and footer ([b0106da](https://github.com/DanBoringName/dj-website/commit/b0106da1a8d971fe9cdd4cb0533317316f3f81f3))
+* **projects:** link cpomdp to PyPI from the projects carousel ([c1f39e8](https://github.com/DanBoringName/dj-website/commit/c1f39e8dc726a0f2438921fe56d69db273265475))
+* **projects:** list cpomdp's features in plain English ([4e9e221](https://github.com/DanBoringName/dj-website/commit/4e9e221d2113694f22b00fdd2b309d67ee48e7b0))
+* **projects:** show the cpomdp bacillus demo on the project monitor ([11c911d](https://github.com/DanBoringName/dj-website/commit/11c911dfaa58dd7976f63a4e95e8330410c8fc32))
+* **projects:** show the inferogenesis mark on the cpomdp and warrantlib cards ([784991d](https://github.com/DanBoringName/dj-website/commit/784991dc8b2ca1b968d1cb1a1521918fc2bd26f7))
+* **projects:** show the warrant terms table on the warrantlib monitor ([96aaca5](https://github.com/DanBoringName/dj-website/commit/96aaca5dd0a0ca3b582bbe8700ee5c1d81f10b05))
+* **projects:** update cpomdp entry with PyPI link, new home and current version ([5d64677](https://github.com/DanBoringName/dj-website/commit/5d64677536f8b5cc8915e687256c593c3572c506))
+* **publications:** add a Publications section and the first paper ([8db8c8c](https://github.com/DanBoringName/dj-website/commit/8db8c8c41be4c625e8ef6740e1abc632a13ca48d))
+* **publications:** show the author byline on each paper ([e45f7a1](https://github.com/DanBoringName/dj-website/commit/e45f7a15a500eb1e5362bb135f20cdd6f5c00d69))
+* **seo:** prerender each route's content into the body ([9854e77](https://github.com/DanBoringName/dj-website/commit/9854e773e1f5acfe3a8ab8d897263eabe17bbe77))
+* **seo:** prerender real content into the body of every route ([d800686](https://github.com/DanBoringName/dj-website/commit/d8006861e56e2748d5efd3cfa74a8c44ee8c5fac))
+
+
+### Bug Fixes
+
+* **blog:** tidied up the title and added a scope paragraph. ([5d2b4c2](https://github.com/DanBoringName/dj-website/commit/5d2b4c2e8df8a4cada9e716a213ed62d4cfc56cd))
+* **cpomdp:** point repo and docs links at inferogenesis ([7c1e477](https://github.com/DanBoringName/dj-website/commit/7c1e477ddfc3fcaf55cfb24e7759ee01f280dd60))
+* **prerender:** use function replacers so $-sequences in content are inserted literally ([d393f82](https://github.com/DanBoringName/dj-website/commit/d393f821cbfb954a525dd3bb25dec33a3e70aa32))
+
+
+### Miscellaneous Chores
+
+* release 0.3.0 ([fadd1cd](https://github.com/DanBoringName/dj-website/commit/fadd1cdc3ea5b85fedf263decaac41bd299a06a0))
+
 ## [0.2.0](https://github.com/DanBoringName/dj-website/compare/v0.2.0...v0.2.0) (2026-06-13)
 
 
