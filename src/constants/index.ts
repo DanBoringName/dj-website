@@ -99,16 +99,6 @@ export const myProjects: Project[] = [
     tags: [{ path: "/assets/python.svg", name: "Python" }],
   },
   {
-    title: "Hestia",
-    desc: "A debate platform built as a TypeScript monorepo.",
-    subdesc:
-      "Hexagonal architecture (ports and adapters) end to end, with the domain logic kept independent of framework and infrastructure. The most conventionally engineered thing I own — built to practise the architecture properly rather than to ship fast.",
-    href: "",
-    sourceHref: "https://github.com/DanBoringName/hestia",
-    spotlight: "/assets/spotlight1.png",
-    tags: [{ path: "/assets/typescript.png", name: "TypeScript" }],
-  },
-  {
     title: "Discord-bot WIP",
     desc: "An AI integrated discord bot built in Rust",
     subdesc:
