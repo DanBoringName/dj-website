@@ -29,6 +29,12 @@ export const navLinks = [
   },
 ];
 
+export const heroSubtitle =
+  "I build tools for community onboarding and science communication, write blogs, and lead research programmes.";
+
+export const aboutIntro =
+  "I'm a software engineer with a physics and maths background — my dissertation solved Einstein's field equations to compute black-hole orbits, which is why one is floating above. These days I build Active Inference agents with pymdp and JAX, and write about the maths in plain engineering terms.";
+
 export const clientReviews = [{}, {}, {}, {}];
 
 export type ProjectTag = { path: string; name: string };

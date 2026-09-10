@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import Blackhole from "../components/Blackhole";
 import CanvasLoader from "../components/CanvasLoader";
 import { useMediaQuery } from "react-responsive";
-import { calculateSizes } from "../constants";
+import { calculateSizes, heroSubtitle } from "../constants";
 import HeroCamera from "../components/HeroCamera";
 import Button from "../components/Button";
 
@@ -19,9 +19,7 @@ const Hero = () => {
         <h1 className="sm:text-4xl text-2xl font-bold text-white text-center font-sans">
           Dan Corva — Research Software Engineer
         </h1>
-        <p className="sm:text-lg text-base font-medium text-neutral-400 text-center font-sans">
-          I build tools for community onboarding and science communication, write blogs, and lead research programmes.
-        </p>
+        <p className="sm:text-lg text-base font-medium text-neutral-400 text-center font-sans">{heroSubtitle}</p>
         <div className="w-full h-full absolute inset-0">
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>

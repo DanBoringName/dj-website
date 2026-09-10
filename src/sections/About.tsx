@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { aboutIntro } from "../constants";
 import TechWheel from "../components/TechWheel";
 import BlogPreview from "../components/BlogPreview";
 import DevLogs from "./DevLogs";
@@ -12,12 +13,7 @@ const About = () => {
             <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
             <div>
               <p className="grid-headtext">Hi, I&apos;m Dan</p>
-              <p className="grid-subtext">
-                I&apos;m a software engineer with a physics and maths background — my dissertation solved
-                Einstein&apos;s field equations to compute black-hole orbits, which is why one is floating above. These
-                days I build Active Inference agents with pymdp and JAX, and write about the maths in plain engineering
-                terms.
-              </p>
+              <p className="grid-subtext">{aboutIntro}</p>
               <Link
                 to="/blog/derive-vfe"
                 className="grid-subtext mt-3 inline-block text-blue-300 hover:text-blue-200 transition-colors"
