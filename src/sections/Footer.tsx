@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="c-space mt-20 border-t border-white/10 py-8">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-neutral-400">
-        <p>Dan Corva — software engineer writing about Active Inference.</p>
+        <p>Dan Corva — research software engineer building tools for community onboarding and science communication.</p>
         {CONTACT_EMAIL ? (
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-blue-300 hover:text-blue-200 transition-colors">
             {CONTACT_EMAIL}
