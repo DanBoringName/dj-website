@@ -99,6 +99,24 @@ export const myProjects: Project[] = [
     tags: [{ path: "/assets/python.svg", name: "Python" }],
   },
   {
+    title: "warrantlib",
+    desc: "A vocabulary for how well a claim is warranted, kept separate from whether it held.",
+    subdesc:
+      "A column of green ticks cannot tell you how anything was settled. A grid of samples over a continuous range and an exhaustive enumeration over a finite set both come back clean, but only the second decided the question. warrantlib is a small vocabulary for keeping that difference in a check suite's output instead of losing it there, plus a pytest plugin that reports it. Built for cpomdp's check suites and published on its own. v0.3.0, standard library only. In plain terms, it:",
+    features: [
+      "Says how a claim was settled, not just that a check passed: proved on paper, proved symbolically, enumerated exhaustively with a certificate, certified numerics, or merely sampled.",
+      "Plugs into pytest with no configuration. Each check becomes a test with its own outcome, and a fired check fails like any other test, reason included.",
+      "Declares every check a suite is registered to report in a manifest, so a check that quietly disappears or gets renamed fails by name instead of shrinking a count nobody notices.",
+      "Needs nothing beyond the Python standard library. The pytest extra adds pytest and nothing else.",
+      "Lives in the cpomdp repository and ships separately on PyPI, so any project can use the vocabulary without pulling in cpomdp.",
+    ],
+    href: "https://pypi.org/project/warrantlib/",
+    hrefLabel: "warrantlib on PyPI",
+    sourceHref: "https://github.com/inferogenesis/cpomdp/tree/main/packages/warrantlib",
+    spotlight: "/assets/spotlight1.png",
+    tags: [{ path: "/assets/python.svg", name: "Python" }],
+  },
+  {
     title: "Discord-bot WIP",
     desc: "An AI integrated discord bot built in Rust",
     subdesc:
