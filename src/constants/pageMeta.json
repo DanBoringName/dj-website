@@ -6,7 +6,7 @@
   "routes": {
     "/": {
       "title": "Dan Corva — Research Software Engineer",
-      "description": "Portfolio, publications and blog of Dan Corva, a software engineer writing about active inference, computational neuroscience and the projects he is building."
+      "description": "Portfolio, publications and blog of Dan Corva, a research software engineer who builds tools for community onboarding and science communication, writes blogs, and leads research programmes."
     },
     "/blog": {
       "title": "Blog — Dan Corva",
