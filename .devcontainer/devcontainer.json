@@ -29,5 +29,5 @@
     }
   },
   "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"],
-  "postCreateCommand": "npm install -g npm@11.4.1 && npm install -g serve && npm install"
+  "postCreateCommand": "npm install -g serve && npm install"
 }

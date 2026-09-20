@@ -1,1 +1,0 @@
-npm install -g npm@11.4.1 && npm install -g serve && npm install
