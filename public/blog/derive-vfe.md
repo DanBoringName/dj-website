@@ -22,11 +22,14 @@ toc: true # auto table of contents
 ### The static case: one observation, one hidden cause.
 
 > **Scope:** This derives the simplest case from Bogacz (2017): inferring a single
-> fixed quantity from a single observation, with a linear-Gaussian model and fixed
+> fixed quantity from a single observation, with a Gaussian prior and Gaussian observation
+> noise, with nonlinear mean function $g(v) = v^2$, and fixed
 > precisions. No dynamics, no time, no action yet — those will come later in the series.
-> (For the mathematically inclined: this is the Laplace-approximated free energy,
-> where the approximate posterior collapses to a point estimate — which is why the
-> KL/entropy term you may have seen elsewhere doesn't appear here.)
+> (For the mathematically inclined: the posterior is non-Gaussian, so I find its mode (MAP),
+> and a Gaussian fitted at that mode is the Laplace approximation. The $F$ I derive is the
+> Laplace-approximated free energy with its curvature term dropped, so the approximate
+> posterior collapses to a point estimate. That's why the KL/entropy term you may have seen
+> elsewhere doesn't appear here.)
 
 [Skip my ramblings, this isn't some hippy cookbook.](#2-the-simplest-case "button")
 
@@ -186,7 +189,7 @@ $p(u)$ is the probability of receiving that amount of light across every possibl
 
 </details>
 
-This is the landmine. For our manufactured simple case with friendly Gaussians, it's doable. _Try Exercise 1 in the Bogacz paper; the Python solution is in [Appendix C](#appendix-c---python-solutions-to-bogacz-exercises) if you get stuck._ In any realistic model (many variables, non-linear $g$) this integral is **intractable** (meaning very difficult or impossible to control, manage, or solve). It's the wall the entire free-energy framework exists to climb over. So rather than smashing our heads against it, we change the question.
+This is the landmine. For our manufactured simple case with friendly Gaussians, it's doable. _Try Exercise 1 in the Bogacz paper; the Python solution is in [Appendix C](#appendix-c---python-solutions-to-bogacz-exercises) if you get stuck._ In any realistic model (many variables, plus a non-linear $g$ like ours) this integral is **intractable** (meaning very difficult or impossible to control, manage, or solve). It's the wall the entire free-energy framework exists to climb over. So rather than smashing our heads against it, we change the question.
 
 #### Finding the most likely value (the MAP shortcut)
 
