@@ -156,6 +156,8 @@ $$
 F = \ln p(\phi) + \ln p(u \mid \phi) \tag{5}
 $$
 
+> **Where this $F$ stops:** The $F$ in equation (5) is $\ln p(\phi) + \ln p(u \mid \phi) = \ln p(\phi, u)$, the log joint evaluated at one point $\phi$. The general variational free energy is an expectation over a whole density $q(v)$. In this post's sign it reads $\mathbb{E}_{q}[\ln p(v, u) - \ln q(v)]$, and it can never rise above $\ln p(u)$. Flip the sign and you get the upper bound on surprise $-\ln p(u)$ from the intro. That bound comes from the expectation over $q$. One point doesn't inherit it. From here on, every "$F$" and every "free energy" means the point version unless I mark it otherwise.
+
 Maximise $F$, find your best guess. If your head hurts, don't worry, mine did too — first deriving it myself, then trying to think of how to write about how I derived it. I've got double your headaches...loser.
 
 To make "the peak of the posterior" concrete, here's that curve actually plotted — the exact posterior $p(v \mid u)$ for the food-size example, computed by solving [Bogacz Exercise 1](#appendix-b--bogacz-exercises) ([Python in Appendix C](#appendix-c---python-solutions-to-bogacz-exercises)). This is the whole target: the single value of $v$ sitting under the peak is $\phi$, our best-guess size, and everything from here on is about reaching that peak _without_ computing the whole curve.
