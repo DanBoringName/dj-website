@@ -34,7 +34,7 @@ toc: true # auto table of contents
 
 If you've ever been like me, lying awake at night contemplating how to implement continuous generative models within the framework of Active Inference, then I'm genuinely surprised because I thought I was weird. In my spare time I am building Active Inference POMDP models with my partner in crime Kev, mostly using the [pymdp](https://github.com/infer-actively/pymdp) python toolbox. Although this toolbox is brilliant and has been a joy to use, it currently doesn't support the creation of Continuous Generative Models (CGMs). This makes my current ultimate goal of creating a Mixed Generative Model (MGM) somewhat more difficult. To do this I need to understand how the fundamental equations of these models are derived, hence this post and subsequent posts. Due to its nature, there isn't a large amount of easily accessible content on Active Inference in general, so whilst learning how to code this stuff, I thought I might as well document it as I go.
 
-So what _is_ Variational Free Energy, before we drown in Greek? It is a mathematically tractable upper bound on sensory "surprise" (or negative log-evidence).
+So what _is_ Variational Free Energy, before we drown in Greek? In its general form it is a mathematically tractable upper bound on sensory "surprise" (or negative log-evidence), and what I derive here is a point approximation to it.
 
 <details>
 
