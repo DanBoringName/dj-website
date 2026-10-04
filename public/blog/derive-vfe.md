@@ -335,6 +335,31 @@ In English this means "let your guess $\phi$ change over time at the rate of the
 
 > **Worth flagging:** this is gradient _ascent_, not descent — notice there's no minus sign. But hang on, doesn't everyone bang on about _minimising_ free energy? They do, and there's no contradiction; it's a naming mismatch that we addressed in an earlier paragraph. The quantity we've been building, $F$, came straight out of logging the _numerator_ of Bayes' rule, so it's a goodness score we want to push _up_ (most probable guess = top of the hill). The free energy the literature tells you to minimise is defined the other way up, as a proxy for _surprise_, which you obviously want _down_. The two are just negatives of each other: $F_{\text{literature}} \approx -F_{\text{ours}}$. Climbing our hill _is_ descending their valley. Bogacz didn't flip his terms to match the convention because his derivation hands him this version for free; negating everything by hand just to agree with a sign convention would've added minus signs to every equation that follows, for zero benefit. So: we ascend, and we call it negative free energy to keep our consciences clear.
 
+<details>
+<summary>
+
+Extra: What the $\approx$ is hiding
+
+</summary>
+
+The $\approx$ hides a term. It isn't a constant offset. Under the Laplace approximation, $F_{\text{literature}} = -F_{\text{ours}} + \tfrac12\ln\Pi(\phi) - \tfrac12\ln 2\pi$. Here $\Pi(\phi)$ is the posterior precision at $\phi$, the curvature of $-\ln p(v, u)$ at $v = \phi$. With $g(v) = v^2$ it works out as $\Pi(\phi) = 1/\Sigma_p + (6\phi^2 - 2u)/\Sigma_u$. That moves with $\phi$, so the dropped term moves too.
+
+Take [Exercise 1](#appendix-b--bogacz-exercises). Its inputs are $v_p = 3$, $\Sigma_p = \Sigma_u = 1$ and $u = 2$, and the peak sits at $\phi = 1.5675$. There $\Pi(\phi) = 11.74$, so the dropped term is 0.313 nats. Everything in the table is in the literature's sign, so it lines up against surprise.
+
+| Quantity                                                   | Value (nats) | Minus surprise |
+| ---------------------------------------------------------- | ------------ | -------------- |
+| $-\ln p(u)$, surprise, by quadrature                       | 3.237        | 0              |
+| $-\ln p(\phi, u)$, this post's $F$ sign-flipped            | 2.968        | −0.268         |
+| Laplace $F_{\text{literature}}$, the dropped term restored | 3.281        | +0.044         |
+
+The flipped $F$ lands 0.268 below surprise, so it isn't a bound. That gap is exactly $\ln p(\phi \mid u)$, because $\ln p(\phi, u) = \ln p(\phi \mid u) + \ln p(u)$. The posterior density at $\phi$ is 1.31. A density can exceed 1. When it does, its log is positive and $-\ln p(\phi, u)$ drops below surprise.
+
+None of this changes the update rule. Equation (9) still climbs to the mode of the posterior. That mode is the MAP estimate, and it's also the mean the Laplace approximation uses.
+
+The Laplace version isn't a bound either. It rests on a second-order expansion of the energy $-\ln p(v, u)$ around $\phi$. That makes it an approximation to the free energy of a Gaussian $q$, with no guarantee of its own. The exact free energy of $q = \mathcal{N}(\phi, 1/\Pi(\phi))$, worked out by integration, sits 0.055 above surprise here.
+
+</details>
+
 #### The two terms and their meaning
 
 We're going to take a break from the algebra for a second and go back to the narrative. The update to $\phi$ is driven by two terms in equation (9). The first pulls the guess towards the prior; the second pulls it according to the sensory input. Let's take a minute to recap each.
