@@ -356,7 +356,7 @@ Extra: What the $\approx$ is hiding
 
 The $\approx$ hides a term. It isn't a constant offset. Under the Laplace approximation, $F_{\text{literature}} = -F_{\text{ours}} + \tfrac12\ln\Pi(\phi) - \tfrac12\ln 2\pi$. Here $\Pi(\phi)$ is the posterior precision at $\phi$, the curvature of $-\ln p(v, u)$ at $v = \phi$. With $g(v) = v^2$ it works out as $\Pi(\phi) = 1/\Sigma_p + (6\phi^2 - 2u)/\Sigma_u$. That moves with $\phi$, so the dropped term moves too.
 
-Take [Exercise 1](#appendix-b--bogacz-exercises). Its inputs are $v_p = 3$, $\Sigma_p = \Sigma_u = 1$ and $u = 2$, and the peak sits at $\phi = 1.5675$. There $\Pi(\phi) = 11.74$, so the dropped term is 0.313 nats. Everything in the table is in the literature's sign, so it lines up against surprise.
+Take [Exercise 1](#appendix-b--bogacz-exercises). Its inputs are $v_p = 3$, $\Sigma_p = \Sigma_u = 1$ and $u = 2$, and the peak sits at $\phi = 1.5675$. There $\Pi(\phi) = 11.74$, so the dropped term is 0.313 nats. Everything in the table is in the literature's sign, so it lines up against surprise. The script is in [Appendix D](#appendix-d---checking-the-bound).
 
 | Quantity                                                   | Value (nats) | Minus surprise |
 | ---------------------------------------------------------- | ------------ | -------------- |
@@ -525,6 +525,49 @@ def exercise_2():
     plt.show()
 
 exercise_2()
+```
+
+## Appendix D - Checking the bound
+
+This script reproduces the table under [Gradient ascent](#gradient-ascent-letting-the-guess-move). It needs numpy only.
+
+```python
+import numpy as np
+
+# Exercise 1 model: prior v ~ N(v_p, s_p), observation u ~ N(v**2, s_u)
+v_p, s_p, s_u, u = 3.0, 1.0, 1.0, 2.0
+
+def log_joint(v):
+    return (-0.5 * np.log(2 * np.pi * s_p) - (v - v_p) ** 2 / (2 * s_p)
+            - 0.5 * np.log(2 * np.pi * s_u) - (u - v ** 2) ** 2 / (2 * s_u))
+
+# Surprise -ln p(u) by brute-force integration over v
+v = np.linspace(-10, 10, 400_001)
+dv = v[1] - v[0]
+surprise = -np.log(np.sum(np.exp(log_joint(v))) * dv)
+
+# phi: the mode the post's gradient flow converges to (root of 2v^3 - 3v - 3)
+phi = 1.0
+for _ in range(20_000):
+    phi += 0.001 * ((v_p - phi) / s_p + (u - phi ** 2) * 2 * phi / s_u)
+
+neg_F = -log_joint(phi)                       # the post's F, sign-flipped
+Pi = 1 / s_p + (6 * phi ** 2 - 2 * u) / s_u   # posterior precision at phi
+F_laplace = neg_F + 0.5 * np.log(Pi) - 0.5 * np.log(2 * np.pi)
+
+print(f"phi                 {phi:.4f}")
+print(f"surprise  -ln p(u)  {surprise:.4f}")
+print(f"-ln p(phi, u)       {neg_F:.4f}   gap {neg_F - surprise:+.4f}  (below: not a bound)")
+print(f"Laplace F           {F_laplace:.4f}   gap {F_laplace - surprise:+.4f}")
+```
+
+It prints:
+
+```text
+phi                 1.5675
+surprise  -ln p(u)  3.2368
+-ln p(phi, u)       2.9684   gap -0.2684  (below: not a bound)
+Laplace F           3.2810   gap +0.0442
 ```
 
 ## Notation Summary
