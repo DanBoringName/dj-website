@@ -215,15 +215,18 @@ Extra: Binocular rivalry
 
 Here's a rundown of the experiment. You show each eye a _different_ image, say, vertical stripes to the left eye and horizontal stripes to the right eye, at the same time. Crucially, the two images cannot both be true of the same patch of the world. Your brain is now stuck with contradictory evidence and has to make sense of it.
 
-![Each eye is shown a different, incompatible image, and the brain has to pick one interpretation.](/assets/binocular_rivalry_setup.svg)
+![Each eye is shown a different, incompatible image, and perception mostly settles on one at a time.](/assets/binocular_rivalry_setup.svg)
 
-Now, if your brain were tracking the _full distribution_ you'd expect to perceive some sensible average of the two. A blurry grey chequerboard.
+**The observation.** Perception mostly _flips_. For a few seconds you see only the vertical stripes, then (without doing anything) it switches and you see only the horizontal stripes, then back again. A stable blend of the two is rare.
 
-**That is not what happens**. What people actually report is that perception _flips_. For a few seconds you see only the vertical stripes, then (without doing anything) it switches and you see only the horizontal stripes, then back again, continuously. You never see the averaged image. Your brain literally picks a winner, commits to it fully, then changes its mind.
+![Perception mostly alternates between one image and the other over time. A stable blend is rare.](/assets/rivalry_flips_not_blends.svg)
 
-![Perception alternates between one image and the other over time, and never settles on a blended average.](/assets/rivalry_flips_not_blends.svg)
+**Two accounts fit it.**
 
-That flipping is the tell. It's exactly what you'd expect from a system that represents the single _most likely_ interpretation rather than the whole probability distribution. When the evidence is genuinely ambiguous, there are two roughly-equally-good "best guesses", and the brain ping-pongs between them. It only ever holds _one at a time_.
+- _A single best guess, plus adaptation or noise._ Pure MAP predicts no switching at all. The gradient flow I derive below settles on one peak and stays there. Flips need something on top, such as adaptation that wears the current winner down, or noise that knocks the estimate across to the other peak.
+- _Sampling the full posterior._ Gershman, Vul and Tenenbaum (2012) get the flips from a system that draws samples from the whole two-peaked posterior. The same model accounts for the patchy percepts and fusion that people sometimes report.
+
+**The conclusion.** Rivalry alone selects neither account. My first version of this aside said a full distribution would show up as a blend. That only follows if the percept is the posterior mean.
 
 </details>
 
@@ -568,3 +571,5 @@ As promised up top, here's the appendix for the symbols and acronyms. Skim it on
 2. Da Costa, L., Parr, T., Sajid, N., Veselic, S., Neacsu, V., & Friston, K. (2020). Active inference on discrete state-spaces: A synthesis. Journal of Mathematical Psychology, 99, 102447.
 
 3. Smith, R., Friston, K. J., & Whyte, C. J. (2022). A step-by-step tutorial on active inference and its application to empirical data. Journal of Mathematical Psychology, 107, 102632.
+
+4. Gershman, S. J., Vul, E., & Tenenbaum, J. B. (2012). Multistability and perceptual inference. _Neural Computation_, 24(1), 1–24.
