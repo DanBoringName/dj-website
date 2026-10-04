@@ -21,12 +21,17 @@ toc: true # auto table of contents
 
 ### The static case: one observation, one hidden cause.
 
+> **Corrected 4 October 2026.** A reader's comment pointed out that this post let the maths slide into biological claims without saying so, and that the $F$ derived here isn't the general VFE. Both points were right. I've marked where $F$ stops, corrected the intro's bound claim and the scope box, shown what the $\approx$ in section 2.3 hides, and rewritten the rivalry and biology asides. A new appendix checks the bound numerically. The derivation itself is unchanged.
+
 > **Scope:** This derives the simplest case from Bogacz (2017): inferring a single
-> fixed quantity from a single observation, with a linear-Gaussian model and fixed
+> fixed quantity from a single observation, with a Gaussian prior and Gaussian observation
+> noise, with nonlinear mean function $g(v) = v^2$, and fixed
 > precisions. No dynamics, no time, no action yet — those will come later in the series.
-> (For the mathematically inclined: this is the Laplace-approximated free energy,
-> where the approximate posterior collapses to a point estimate — which is why the
-> KL/entropy term you may have seen elsewhere doesn't appear here.)
+> (For the mathematically inclined: the posterior is non-Gaussian, so I find its mode (MAP),
+> and a Gaussian fitted at that mode is the Laplace approximation. The $F$ I derive is the
+> Laplace-approximated free energy with its curvature term dropped, so the approximate
+> posterior collapses to a point estimate. That's why the KL/entropy term you may have seen
+> elsewhere doesn't appear here.)
 
 [Skip my ramblings, this isn't some hippy cookbook.](#2-the-simplest-case "button")
 
@@ -34,7 +39,7 @@ toc: true # auto table of contents
 
 If you've ever been like me, lying awake at night contemplating how to implement continuous generative models within the framework of Active Inference, then I'm genuinely surprised because I thought I was weird. In my spare time I am building Active Inference POMDP models with my partner in crime Kev, mostly using the [pymdp](https://github.com/infer-actively/pymdp) python toolbox. Although this toolbox is brilliant and has been a joy to use, it currently doesn't support the creation of Continuous Generative Models (CGMs). This makes my current ultimate goal of creating a Mixed Generative Model (MGM) somewhat more difficult. To do this I need to understand how the fundamental equations of these models are derived, hence this post and subsequent posts. Due to its nature, there isn't a large amount of easily accessible content on Active Inference in general, so whilst learning how to code this stuff, I thought I might as well document it as I go.
 
-So what _is_ Variational Free Energy, before we drown in Greek? It is a mathematically tractable upper bound on sensory "surprise" (or negative log-evidence).
+So what _is_ Variational Free Energy, before we drown in Greek? In its general form it is a mathematically tractable upper bound on sensory "surprise" (or negative log-evidence), and what I derive here is a point approximation to it.
 
 <details>
 
@@ -44,7 +49,16 @@ Extra: Variational Free Energy in English
 
 </summary>
 
-In simpler terms: biological systems cannot directly measure how objectively surprising their environment is, because they do not have direct access to the hidden states of the world. Instead, they compute and minimise Variational Free Energy. By minimising VFE, an agent indirectly minimises its sensory surprise.
+In simpler terms: an organism can't directly measure how surprising its sensory input is, because it has no direct access to the hidden states of the world behind that input. It could compute VFE instead. VFE sits above surprise, so keeping VFE low keeps surprise low too.
+
+Bogacz keeps the biology modal. He calls it "reasonable to assume" that in many cases the brain represents only the most likely values of features, and he offers his neural circuit as "a possible implementation". My first draft of this aside stated the biology as fact. That was an overreach on my part.
+
+The claims sit at four levels, and they don't share the same standing:
+
+1. **The maths.** Derived in this post. It holds under the assumptions in the scope box.
+2. **The optimisation reading.** Gradient ascent on $F$ finds the MAP estimate. Also shown in this post.
+3. **The computational reading.** Perception is approximate inference. A hypothesis.
+4. **The biological reading.** Cortex implements this. A hypothesis with its own evidence base, which this post doesn't supply.
 
 </details>
 
@@ -156,6 +170,8 @@ $$
 F = \ln p(\phi) + \ln p(u \mid \phi) \tag{5}
 $$
 
+> **Where this $F$ stops:** The $F$ in equation (5) is $\ln p(\phi) + \ln p(u \mid \phi) = \ln p(\phi, u)$, the log joint evaluated at one point $\phi$. The general variational free energy is an expectation over a whole density $q(v)$. In this post's sign it reads $\mathbb{E}_{q}[\ln p(v, u) - \ln q(v)]$, and it can never rise above $\ln p(u)$. Flip the sign and you get the upper bound on surprise $-\ln p(u)$ from the intro. That bound comes from the expectation over $q$. One point doesn't inherit it. From here on, every "$F$" and every "free energy" means the point version unless I mark it otherwise.
+
 Maximise $F$, find your best guess. If your head hurts, don't worry, mine did too — first deriving it myself, then trying to think of how to write about how I derived it. I've got double your headaches...loser.
 
 To make "the peak of the posterior" concrete, here's that curve actually plotted — the exact posterior $p(v \mid u)$ for the food-size example, computed by solving [Bogacz Exercise 1](#appendix-b--bogacz-exercises) ([Python in Appendix C](#appendix-c---python-solutions-to-bogacz-exercises)). This is the whole target: the single value of $v$ sitting under the peak is $\phi$, our best-guess size, and everything from here on is about reaching that peak _without_ computing the whole curve.
@@ -184,7 +200,7 @@ $p(u)$ is the probability of receiving that amount of light across every possibl
 
 </details>
 
-This is the landmine. For our manufactured simple case with friendly Gaussians, it's doable. _Try Exercise 1 in the Bogacz paper; the Python solution is in [Appendix C](#appendix-c---python-solutions-to-bogacz-exercises) if you get stuck._ In any realistic model (many variables, non-linear $g$) this integral is **intractable** (meaning very difficult or impossible to control, manage, or solve). It's the wall the entire free-energy framework exists to climb over. So rather than smashing our heads against it, we change the question.
+This is the landmine. For our manufactured simple case with friendly Gaussians, it's doable. _Try Exercise 1 in the Bogacz paper; the Python solution is in [Appendix C](#appendix-c---python-solutions-to-bogacz-exercises) if you get stuck._ In any realistic model (many variables, plus a non-linear $g$ like ours) this integral is **intractable** (meaning very difficult or impossible to control, manage, or solve). It's the wall the entire free-energy framework exists to climb over. So rather than smashing our heads against it, we change the question.
 
 #### Finding the most likely value (the MAP shortcut)
 
@@ -201,15 +217,18 @@ Extra: Binocular rivalry
 
 Here's a rundown of the experiment. You show each eye a _different_ image, say, vertical stripes to the left eye and horizontal stripes to the right eye, at the same time. Crucially, the two images cannot both be true of the same patch of the world. Your brain is now stuck with contradictory evidence and has to make sense of it.
 
-![Each eye is shown a different, incompatible image, and the brain has to pick one interpretation.](/assets/binocular_rivalry_setup.svg)
+![Each eye is shown a different, incompatible image, and perception mostly settles on one at a time.](/assets/binocular_rivalry_setup.svg)
 
-Now, if your brain were tracking the _full distribution_ you'd expect to perceive some sensible average of the two. A blurry grey chequerboard.
+**The observation.** Perception mostly _flips_. For a few seconds you see only the vertical stripes, then (without doing anything) it switches and you see only the horizontal stripes, then back again. A stable blend of the two is rare.
 
-**That is not what happens**. What people actually report is that perception _flips_. For a few seconds you see only the vertical stripes, then (without doing anything) it switches and you see only the horizontal stripes, then back again, continuously. You never see the averaged image. Your brain literally picks a winner, commits to it fully, then changes its mind.
+![Perception mostly alternates between one image and the other over time. A stable blend is rare.](/assets/rivalry_flips_not_blends.svg)
 
-![Perception alternates between one image and the other over time, and never settles on a blended average.](/assets/rivalry_flips_not_blends.svg)
+**Two accounts fit it.**
 
-That flipping is the tell. It's exactly what you'd expect from a system that represents the single _most likely_ interpretation rather than the whole probability distribution. When the evidence is genuinely ambiguous, there are two roughly-equally-good "best guesses", and the brain ping-pongs between them. It only ever holds _one at a time_.
+- _A single best guess, plus adaptation or noise._ Pure MAP predicts no switching at all. The gradient flow I derive below settles on one peak and stays there. Flips need something on top, such as adaptation that wears the current winner down, or noise that knocks the estimate across to the other peak.
+- _Sampling the full posterior._ Gershman, Vul and Tenenbaum (2012) get the flips from a system that draws samples from the whole two-peaked posterior. The same model accounts for the patchy percepts and fusion that people sometimes report.
+
+**The conclusion.** Rivalry alone selects neither account. My first version of this aside said a full distribution would show up as a blend. That only follows if the percept is the posterior mean.
 
 </details>
 
@@ -329,6 +348,31 @@ In English this means "let your guess $\phi$ change over time at the rate of the
 ![A ball climbing the free-energy curve via gradient ascent: it moves fast where the slope is steep, slows as the gradient flattens, and comes to rest at the peak where ∂F/∂φ = 0.](/assets/gradient_ascent.gif)
 
 > **Worth flagging:** this is gradient _ascent_, not descent — notice there's no minus sign. But hang on, doesn't everyone bang on about _minimising_ free energy? They do, and there's no contradiction; it's a naming mismatch that we addressed in an earlier paragraph. The quantity we've been building, $F$, came straight out of logging the _numerator_ of Bayes' rule, so it's a goodness score we want to push _up_ (most probable guess = top of the hill). The free energy the literature tells you to minimise is defined the other way up, as a proxy for _surprise_, which you obviously want _down_. The two are just negatives of each other: $F_{\text{literature}} \approx -F_{\text{ours}}$. Climbing our hill _is_ descending their valley. Bogacz didn't flip his terms to match the convention because his derivation hands him this version for free; negating everything by hand just to agree with a sign convention would've added minus signs to every equation that follows, for zero benefit. So: we ascend, and we call it negative free energy to keep our consciences clear.
+
+<details>
+<summary>
+
+Extra: What the $\approx$ is hiding
+
+</summary>
+
+The $\approx$ hides a term. It isn't a constant offset. Under the Laplace approximation, $F_{\text{literature}} = -F_{\text{ours}} + \tfrac12\ln\Pi(\phi) - \tfrac12\ln 2\pi$. Here $\Pi(\phi)$ is the posterior precision at $\phi$, the curvature of $-\ln p(v, u)$ at $v = \phi$. With $g(v) = v^2$ it works out as $\Pi(\phi) = 1/\Sigma_p + (6\phi^2 - 2u)/\Sigma_u$. That moves with $\phi$, so the dropped term moves too.
+
+Take [Exercise 1](#appendix-b--bogacz-exercises). Its inputs are $v_p = 3$, $\Sigma_p = \Sigma_u = 1$ and $u = 2$, and the peak sits at $\phi = 1.5675$. There $\Pi(\phi) = 11.74$, so the dropped term is 0.313 nats. Everything in the table is in the literature's sign, so it lines up against surprise. The script is in [Appendix D](#appendix-d---checking-the-bound).
+
+| Quantity                                                   | Value (nats) | Minus surprise |
+| ---------------------------------------------------------- | ------------ | -------------- |
+| $-\ln p(u)$, surprise, by quadrature                       | 3.237        | 0              |
+| $-\ln p(\phi, u)$, this post's $F$ sign-flipped            | 2.968        | −0.268         |
+| Laplace $F_{\text{literature}}$, the dropped term restored | 3.281        | +0.044         |
+
+The flipped $F$ lands 0.268 below surprise, so it isn't a bound. That gap is exactly $\ln p(\phi \mid u)$, because $\ln p(\phi, u) = \ln p(\phi \mid u) + \ln p(u)$. The posterior density at $\phi$ is 1.31. A density can exceed 1. When it does, its log is positive and $-\ln p(\phi, u)$ drops below surprise.
+
+None of this changes the update rule. Equation (9) still climbs to the mode of the posterior. That mode is the MAP estimate, and it's also the mean the Laplace approximation uses.
+
+The Laplace version isn't a bound either. It rests on a second-order expansion of the energy $-\ln p(v, u)$ around $\phi$. That makes it an approximation to the free energy of a Gaussian $q$, with no guarantee of its own. The exact free energy of $q = \mathcal{N}(\phi, 1/\Pi(\phi))$, worked out by integration, sits 0.055 above surprise here.
+
+</details>
 
 #### The two terms and their meaning
 
@@ -485,6 +529,49 @@ def exercise_2():
 exercise_2()
 ```
 
+## Appendix D - Checking the bound
+
+This script reproduces the table under [Gradient ascent](#gradient-ascent-letting-the-guess-move). It needs numpy only.
+
+```python
+import numpy as np
+
+# Exercise 1 model: prior v ~ N(v_p, s_p), observation u ~ N(v**2, s_u)
+v_p, s_p, s_u, u = 3.0, 1.0, 1.0, 2.0
+
+def log_joint(v):
+    return (-0.5 * np.log(2 * np.pi * s_p) - (v - v_p) ** 2 / (2 * s_p)
+            - 0.5 * np.log(2 * np.pi * s_u) - (u - v ** 2) ** 2 / (2 * s_u))
+
+# Surprise -ln p(u) by brute-force integration over v
+v = np.linspace(-10, 10, 400_001)
+dv = v[1] - v[0]
+surprise = -np.log(np.sum(np.exp(log_joint(v))) * dv)
+
+# phi: the mode the post's gradient flow converges to (root of 2v^3 - 3v - 3)
+phi = 1.0
+for _ in range(20_000):
+    phi += 0.001 * ((v_p - phi) / s_p + (u - phi ** 2) * 2 * phi / s_u)
+
+neg_F = -log_joint(phi)                       # the post's F, sign-flipped
+Pi = 1 / s_p + (6 * phi ** 2 - 2 * u) / s_u   # posterior precision at phi
+F_laplace = neg_F + 0.5 * np.log(Pi) - 0.5 * np.log(2 * np.pi)
+
+print(f"phi                 {phi:.4f}")
+print(f"surprise  -ln p(u)  {surprise:.4f}")
+print(f"-ln p(phi, u)       {neg_F:.4f}   gap {neg_F - surprise:+.4f}  (below: not a bound)")
+print(f"Laplace F           {F_laplace:.4f}   gap {F_laplace - surprise:+.4f}")
+```
+
+It prints:
+
+```text
+phi                 1.5675
+surprise  -ln p(u)  3.2368
+-ln p(phi, u)       2.9684   gap -0.2684  (below: not a bound)
+Laplace F           3.2810   gap +0.0442
+```
+
 ## Notation Summary
 
 As promised up top, here's the appendix for the symbols and acronyms. Skim it once now if you like, or just flick back whenever a piece of Greek catches you out.
@@ -529,3 +616,5 @@ As promised up top, here's the appendix for the symbols and acronyms. Skim it on
 2. Da Costa, L., Parr, T., Sajid, N., Veselic, S., Neacsu, V., & Friston, K. (2020). Active inference on discrete state-spaces: A synthesis. Journal of Mathematical Psychology, 99, 102447.
 
 3. Smith, R., Friston, K. J., & Whyte, C. J. (2022). A step-by-step tutorial on active inference and its application to empirical data. Journal of Mathematical Psychology, 107, 102632.
+
+4. Gershman, S. J., Vul, E., & Tenenbaum, J. B. (2012). Multistability and perceptual inference. _Neural Computation_, 24(1), 1–24.
