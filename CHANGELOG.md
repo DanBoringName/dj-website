@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.4.0](https://github.com/DanBoringName/dj-website/compare/v0.3.0...v0.4.0) (2026-10-04)
+
+
+### Features
+
+* **blog:** add a bound check appendix to derive-vfe [C7] ([dd89b9d](https://github.com/DanBoringName/dj-website/commit/dd89b9dd12c00cc22ff1328c58becf92cb2f8ab7))
+
+
+### Bug Fixes
+
+* **blog:** attribute the surprise bound to the general VFE [C2] ([341dffd](https://github.com/DanBoringName/dj-website/commit/341dffd7233c9a4e9f4c0885d77817b80960093e))
+* **blog:** correct derive-vfe claims about F, the bound and the biology ([b4387c3](https://github.com/DanBoringName/dj-website/commit/b4387c32c2f3fccbe62f5d3a6b87c64ddf464890))
+* **blog:** describe the derive-vfe model as nonlinear [C3] ([ae05457](https://github.com/DanBoringName/dj-website/commit/ae0545789b6a582a2cab09454f794ce87b7bd331))
+* **blog:** make the rivalry aside's inference explicit [C6] ([07cf3cd](https://github.com/DanBoringName/dj-website/commit/07cf3cd7448ab57d20b07916f1182de5984ae3cd))
+* **blog:** mark where the derive-vfe F stops [C1] ([c9ef192](https://github.com/DanBoringName/dj-website/commit/c9ef192db43b687f0aa61c8721286320dbaba18b))
+* **blog:** restore Bogacz's modal framing in the VFE aside [C5] ([2cd7484](https://github.com/DanBoringName/dj-website/commit/2cd7484efcb1232cdb6d3c27b606c3119a8c67ed))
+* **blog:** show what the derive-vfe approximation drops [C4] ([df22d26](https://github.com/DanBoringName/dj-website/commit/df22d266d066bb7df534930ad3557602815abe6c))
+
 ## [0.3.0](https://github.com/DanBoringName/dj-website/compare/v0.2.0...v0.3.0) (2026-09-10)
 
 
