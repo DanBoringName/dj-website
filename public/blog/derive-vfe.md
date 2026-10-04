@@ -47,7 +47,16 @@ Extra: Variational Free Energy in English
 
 </summary>
 
-In simpler terms: biological systems cannot directly measure how objectively surprising their environment is, because they do not have direct access to the hidden states of the world. Instead, they compute and minimise Variational Free Energy. By minimising VFE, an agent indirectly minimises its sensory surprise.
+In simpler terms: an organism can't directly measure how surprising its sensory input is, because it has no direct access to the hidden states of the world behind that input. It could compute VFE instead. VFE sits above surprise, so keeping VFE low keeps surprise low too.
+
+Bogacz keeps the biology modal. He calls it "reasonable to assume" that in many cases the brain represents only the most likely values of features, and he offers his neural circuit as "a possible implementation". My first draft of this aside stated the biology as fact. That was an overreach on my part.
+
+The claims sit at four levels, and they don't share the same standing:
+
+1. **The maths.** Derived in this post. It holds under the assumptions in the scope box.
+2. **The optimisation reading.** Gradient ascent on $F$ finds the MAP estimate. Also shown in this post.
+3. **The computational reading.** Perception is approximate inference. A hypothesis.
+4. **The biological reading.** Cortex implements this. A hypothesis with its own evidence base, which this post doesn't supply.
 
 </details>
 
