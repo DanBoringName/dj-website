@@ -21,6 +21,8 @@ toc: true # auto table of contents
 
 ### The static case: one observation, one hidden cause.
 
+> **Corrected 4 October 2026.** A reader's comment pointed out that this post let the maths slide into biological claims without saying so, and that the $F$ derived here isn't the general VFE. Both points were right. I've marked where $F$ stops, corrected the intro's bound claim and the scope box, shown what the $\approx$ in section 2.3 hides, and rewritten the rivalry and biology asides. A new appendix checks the bound numerically. The derivation itself is unchanged.
+
 > **Scope:** This derives the simplest case from Bogacz (2017): inferring a single
 > fixed quantity from a single observation, with a Gaussian prior and Gaussian observation
 > noise, with nonlinear mean function $g(v) = v^2$, and fixed
