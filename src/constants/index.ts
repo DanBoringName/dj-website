@@ -154,11 +154,12 @@ export const myProjects: Project[] = [
     isLive: true,
   },
   {
-    title: "Discord-bot WIP",
-    desc: "An AI integrated discord bot built in Rust",
+    title: "Discord bot (archived prototype)",
+    desc: "An LLM-powered Discord bot for tabletop groups, built in Rust in 2025.",
     subdesc:
-      "Research is still being done on the scope of this. The aim is to create a bot useful for any tabletop situation, from asking the bot to create a quick image from your description to highlighting key parts of a conversation.",
+      "A prototype that connected Gemini and GPT to a Discord server through their APIs, so a tabletop group could ask for a quick image from a description or pull out the key points of a long conversation. A few friends joined as collaborators. It showed what it set out to show, and it is now shelved while my time goes into active inference.",
     href: "/discordbot",
+    hrefLabel: "Dev logs",
     texture: "/textures/project/bot_demo_june.mp4",
     logo: "/assets/project-logo1.png",
     logoStyle: {},
