@@ -56,27 +56,11 @@ export type Project = {
   features?: string[];
   tags: ProjectTag[];
   isLive?: boolean;
+  /** Marks the headline project; it is listed first and labelled as the flagship. */
+  flagship?: boolean;
 };
 
 export const myProjects: Project[] = [
-  {
-    title: "dj-elliott.com (this very site)",
-    desc: "The personal site you are currently looking at.",
-    subdesc:
-      "Mostly an excuse to crack on with Three.js properly. The hero is a black hole largely because I wrote my dissertation on solving Einstein's field equations to calculate black hole orbits, the tech wheel rotates because it felt like a good idea, and the rest is held together with TypeScript, React, Vite and Tailwind. CI deploys it to GitHub Pages with per-route prerendering for SEO. Still very much a WIP - bits get reworked when I get bored.",
-    href: "/",
-    sourceHref: "https://github.com/DanBoringName/dj-website",
-    texture: "/textures/project/dj-website.mp4",
-    logo: "/assets/dj-elliott_website_logo.png",
-    logoStyle: {},
-    spotlight: "/assets/spotlight1.png",
-    tags: [
-      { path: "/assets/react.svg", name: "React" },
-      { path: "/assets/typescript.png", name: "TypeScript" },
-      { path: "/assets/tailwindcss.png", name: "Tailwind" },
-    ],
-    isLive: true,
-  },
   {
     title: "Inferogenesis",
     desc: "Open-source software for continuous active inference, and the research that tests it.",
@@ -97,6 +81,7 @@ export const myProjects: Project[] = [
     logoStyle: {},
     spotlight: "/assets/spotlight2.png",
     tags: [{ path: "/assets/typescript.png", name: "TypeScript" }],
+    flagship: true,
   },
   {
     title: "cpomdp — continuous active inference",
@@ -149,6 +134,24 @@ export const myProjects: Project[] = [
     logoStyle: {},
     spotlight: "/assets/spotlight1.png",
     tags: [{ path: "/assets/python.svg", name: "Python" }],
+  },
+  {
+    title: "dj-elliott.com (this very site)",
+    desc: "The personal site you are currently looking at.",
+    subdesc:
+      "Mostly an excuse to crack on with Three.js properly. The hero is a black hole largely because I wrote my dissertation on solving Einstein's field equations to calculate black hole orbits, the tech wheel rotates because it felt like a good idea, and the rest is held together with TypeScript, React, Vite and Tailwind. CI deploys it to GitHub Pages with per-route prerendering for SEO. Still very much a WIP - bits get reworked when I get bored.",
+    href: "/",
+    sourceHref: "https://github.com/DanBoringName/dj-website",
+    texture: "/textures/project/dj-website.mp4",
+    logo: "/assets/dj-elliott_website_logo.png",
+    logoStyle: {},
+    spotlight: "/assets/spotlight1.png",
+    tags: [
+      { path: "/assets/react.svg", name: "React" },
+      { path: "/assets/typescript.png", name: "TypeScript" },
+      { path: "/assets/tailwindcss.png", name: "Tailwind" },
+    ],
+    isLive: true,
   },
   {
     title: "Discord-bot WIP",
