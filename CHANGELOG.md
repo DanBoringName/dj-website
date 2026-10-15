@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.4.0](https://github.com/DanBoringName/dj-website/compare/v0.3.0...v0.4.0) (2026-10-15)
+
+
+### Features
+
+* **blog:** add a bound check appendix to derive-vfe [C7] ([dd89b9d](https://github.com/DanBoringName/dj-website/commit/dd89b9dd12c00cc22ff1328c58becf92cb2f8ab7))
+* **devcontainer:** update postCreateCommand and add dotfiles setup script ([818a31e](https://github.com/DanBoringName/dj-website/commit/818a31e28b1675058304bb40461d9d9595242f0f))
+* **projects:** add Inferogenesis as a project ([df15d0d](https://github.com/DanBoringName/dj-website/commit/df15d0de6b5694fda22a8fb0c1444eb037aff92f))
+* **projects:** add Inferogenesis now that inferogenesis.com is live ([86c8ac4](https://github.com/DanBoringName/dj-website/commit/86c8ac49e2918c1f1267d2e99cefc771c5285849))
+* **projects:** link warrantlib to its Inferogenesis project page ([b6c8ca6](https://github.com/DanBoringName/dj-website/commit/b6c8ca626cae7b9fcce50a5daa5dcd21d97a186c))
+* **projects:** list Inferogenesis first and label it the flagship project ([da23939](https://github.com/DanBoringName/dj-website/commit/da23939b32f76fa80658b7a4217fffe4f0b46715))
+* **projects:** present the Discord bot as an archived 2025 prototype ([8468576](https://github.com/DanBoringName/dj-website/commit/846857622cef37d1fbd4bc3b5e4a67bda3d353f6))
+
+
+### Bug Fixes
+
+* **blog:** attribute the surprise bound to the general VFE [C2] ([341dffd](https://github.com/DanBoringName/dj-website/commit/341dffd7233c9a4e9f4c0885d77817b80960093e))
+* **blog:** correct derive-vfe claims about F, the bound and the biology ([b4387c3](https://github.com/DanBoringName/dj-website/commit/b4387c32c2f3fccbe62f5d3a6b87c64ddf464890))
+* **blog:** describe the derive-vfe model as nonlinear [C3] ([ae05457](https://github.com/DanBoringName/dj-website/commit/ae0545789b6a582a2cab09454f794ce87b7bd331))
+* **blog:** make the rivalry aside's inference explicit [C6] ([07cf3cd](https://github.com/DanBoringName/dj-website/commit/07cf3cd7448ab57d20b07916f1182de5984ae3cd))
+* **blog:** mark where the derive-vfe F stops [C1] ([c9ef192](https://github.com/DanBoringName/dj-website/commit/c9ef192db43b687f0aa61c8721286320dbaba18b))
+* **blog:** restore Bogacz's modal framing in the VFE aside [C5] ([2cd7484](https://github.com/DanBoringName/dj-website/commit/2cd7484efcb1232cdb6d3c27b606c3119a8c67ed))
+* **blog:** show what the derive-vfe approximation drops [C4] ([df22d26](https://github.com/DanBoringName/dj-website/commit/df22d266d066bb7df534930ad3557602815abe6c))
+
 ## [0.3.0](https://github.com/DanBoringName/dj-website/compare/v0.2.0...v0.3.0) (2026-09-10)
 
 
