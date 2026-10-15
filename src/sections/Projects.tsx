@@ -48,7 +48,12 @@ const Projects = () => {
             </div>
           )}
           <div className="flex flex-col gap-5 text-neutral-600 my-5">
-            <p className="text-white text-2xl font-semibold animatedText">{currentProject.title}</p>
+            <div>
+              {currentProject.flagship && (
+                <p className="animatedText text-xs uppercase tracking-[0.2em] text-blue-300">Flagship project</p>
+              )}
+              <p className="text-white text-2xl font-semibold animatedText">{currentProject.title}</p>
+            </div>
             {currentProject.desc && <p className="animatedText text-[#afb0b6]">{currentProject.desc}</p>}
             {currentProject.subdesc && <p className="animatedText text-[#afb0b6]">{currentProject.subdesc}</p>}
             {currentProject.features && (

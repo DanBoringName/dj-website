@@ -135,7 +135,8 @@ const projectHtml = (project) => {
   if (project.sourceHref) links.push(a(project.sourceHref, "Source on GitHub"));
   if (project.packageHref) links.push(a(project.packageHref, project.packageLabel ?? "Package"));
   if (project.href && project.href !== "/") links.push(a(project.href, project.hrefLabel ?? "Go to project"));
-  return `<article><h3>${escapeHtml(project.title)}</h3>${p(project.desc)}${p(project.subdesc)}${list(
+  const flagship = project.flagship ? "<p>Flagship project</p>" : "";
+  return `<article>${flagship}<h3>${escapeHtml(project.title)}</h3>${p(project.desc)}${p(project.subdesc)}${list(
     project.features,
   )}${links.length ? `<p>${links.join(" · ")}</p>` : ""}</article>`;
 };

@@ -56,26 +56,32 @@ export type Project = {
   features?: string[];
   tags: ProjectTag[];
   isLive?: boolean;
+  /** Marks the headline project; it is listed first and labelled as the flagship. */
+  flagship?: boolean;
 };
 
 export const myProjects: Project[] = [
   {
-    title: "dj-elliott.com (this very site)",
-    desc: "The personal site you are currently looking at.",
+    title: "Inferogenesis",
+    desc: "Open-source software for continuous active inference, and the research that tests it.",
     subdesc:
-      "Mostly an excuse to crack on with Three.js properly. The hero is a black hole largely because I wrote my dissertation on solving Einstein's field equations to calculate black hole orbits, the tech wheel rotates because it felt like a good idea, and the rest is held together with TypeScript, React, Vite and Tailwind. CI deploys it to GitHub Pages with per-route prerendering for SEO. Still very much a WIP - bits get reworked when I get bored.",
-    href: "/",
-    sourceHref: "https://github.com/DanBoringName/dj-website",
-    texture: "/textures/project/dj-website.mp4",
-    logo: "/assets/dj-elliott_website_logo.png",
-    logoStyle: {},
-    spotlight: "/assets/spotlight1.png",
-    tags: [
-      { path: "/assets/react.svg", name: "React" },
-      { path: "/assets/typescript.png", name: "TypeScript" },
-      { path: "/assets/tailwindcss.png", name: "Tailwind" },
+      "The home for cpomdp, warrantlib and the research behind them, at inferogenesis.com. Built with Astro and TypeScript, self-funded and maintained by me. In plain terms, it:",
+    features: [
+      "Gives each library a project page that opens with the install command and a short example.",
+      "Lists the research the software rests on, starting with the preprint on state-dependent observation noise.",
+      "Sets out p*, a programme on certifiable active inference: hold the agent's model and the world apart, then ask what being wrong costs in free energy and how tightly that cost can be certified.",
+      "Collects technical writing on active inference, including the posts on this blog, with an RSS feed.",
+      "Keeps everything open: code under MIT, content under CC BY 4.0.",
     ],
-    isLive: true,
+    href: "https://inferogenesis.com/",
+    hrefLabel: "Visit inferogenesis.com",
+    sourceHref: "https://github.com/inferogenesis/inferogenesis.com",
+    texture: "/textures/project/inferogenesis.png",
+    logo: "/assets/inferogenesis.png",
+    logoStyle: {},
+    spotlight: "/assets/spotlight2.png",
+    tags: [{ path: "/assets/typescript.png", name: "TypeScript" }],
+    flagship: true,
   },
   {
     title: "cpomdp — continuous active inference",
@@ -118,9 +124,11 @@ export const myProjects: Project[] = [
       "Needs nothing beyond the Python standard library. The pytest extra adds pytest and nothing else.",
       "Lives in the cpomdp repository and ships separately on PyPI, so any project can use the vocabulary without pulling in cpomdp.",
     ],
-    href: "https://pypi.org/project/warrantlib/",
-    hrefLabel: "warrantlib on PyPI",
+    href: "https://inferogenesis.com/projects/warrantlib/",
+    hrefLabel: "Project page",
     sourceHref: "https://github.com/inferogenesis/cpomdp/tree/main/packages/warrantlib",
+    packageHref: "https://pypi.org/project/warrantlib/",
+    packageLabel: "warrantlib on PyPI",
     texture: "/textures/project/warrantlib_terms.png",
     logo: "/assets/inferogenesis.png",
     logoStyle: {},
@@ -128,11 +136,30 @@ export const myProjects: Project[] = [
     tags: [{ path: "/assets/python.svg", name: "Python" }],
   },
   {
-    title: "Discord-bot WIP",
-    desc: "An AI integrated discord bot built in Rust",
+    title: "dj-elliott.com (this very site)",
+    desc: "The personal site you are currently looking at.",
     subdesc:
-      "Research is still being done on the scope of this. The aim is to create a bot useful for any tabletop situation, from asking the bot to create a quick image from your description to highlighting key parts of a conversation.",
+      "Mostly an excuse to crack on with Three.js properly. The hero is a black hole largely because I wrote my dissertation on solving Einstein's field equations to calculate black hole orbits, the tech wheel rotates because it felt like a good idea, and the rest is held together with TypeScript, React, Vite and Tailwind. CI deploys it to GitHub Pages with per-route prerendering for SEO. Still very much a WIP - bits get reworked when I get bored.",
+    href: "/",
+    sourceHref: "https://github.com/DanBoringName/dj-website",
+    texture: "/textures/project/dj-website.mp4",
+    logo: "/assets/dj-elliott_website_logo.png",
+    logoStyle: {},
+    spotlight: "/assets/spotlight1.png",
+    tags: [
+      { path: "/assets/react.svg", name: "React" },
+      { path: "/assets/typescript.png", name: "TypeScript" },
+      { path: "/assets/tailwindcss.png", name: "Tailwind" },
+    ],
+    isLive: true,
+  },
+  {
+    title: "Discord bot (archived prototype)",
+    desc: "An LLM-powered Discord bot for tabletop groups, built in Rust in 2025.",
+    subdesc:
+      "A prototype that connected Gemini and GPT to a Discord server through their APIs, so a tabletop group could ask for a quick image from a description or pull out the key points of a long conversation. A few friends joined as collaborators. It showed what it set out to show, and it is now shelved while my time goes into active inference.",
     href: "/discordbot",
+    hrefLabel: "Dev logs",
     texture: "/textures/project/bot_demo_june.mp4",
     logo: "/assets/project-logo1.png",
     logoStyle: {},
