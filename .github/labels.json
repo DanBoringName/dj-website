@@ -1,0 +1,119 @@
+{
+  "_comment": "Synced by .github/workflows/labels.yml on merge. The sync creates and updates and never deletes. `claude: true` marks the labels the weekly upkeep run may add.",
+  "labels": [
+    {
+      "name": "bug",
+      "color": "d73a4a",
+      "description": "Something isn't working",
+      "claude": true
+    },
+    {
+      "name": "enhancement",
+      "color": "a2eeef",
+      "description": "New feature or request",
+      "claude": true
+    },
+    {
+      "name": "documentation",
+      "color": "0075ca",
+      "description": "Improvements or additions to documentation",
+      "claude": true
+    },
+    {
+      "name": "question",
+      "color": "d876e3",
+      "description": "Further information is requested",
+      "claude": true
+    },
+    {
+      "name": "duplicate",
+      "color": "cfd3d7",
+      "description": "This issue or pull request already exists",
+      "claude": true
+    },
+    {
+      "name": "good first issue",
+      "color": "7057ff",
+      "description": "Good for newcomers: small, settled, checkable",
+      "claude": false
+    },
+    {
+      "name": "help wanted",
+      "color": "008672",
+      "description": "Design settled, open to an outside contributor",
+      "claude": false
+    },
+    {
+      "name": "invalid",
+      "color": "e4e669",
+      "description": "This doesn't seem right",
+      "claude": false
+    },
+    {
+      "name": "wontfix",
+      "color": "ffffff",
+      "description": "This will not be worked on",
+      "claude": false
+    },
+    {
+      "name": "triaged",
+      "color": "ededed",
+      "description": "Labelled by a maintainer or the weekly upkeep run",
+      "claude": false
+    },
+    {
+      "name": "claude-proposed",
+      "color": "bfd4f2",
+      "description": "Filed by the weekly upkeep run. Scope not yet confirmed",
+      "claude": false
+    },
+    {
+      "name": "upkeep-log",
+      "color": "5319e7",
+      "description": "The weekly upkeep run's log issue",
+      "claude": false
+    },
+    {
+      "name": "dependencies",
+      "color": "0366d6",
+      "description": "Pull requests that update a dependency file",
+      "claude": false
+    },
+    {
+      "name": "area:content",
+      "color": "1d76db",
+      "description": "Blog posts, dev logs and page copy",
+      "claude": true
+    },
+    {
+      "name": "area:3d",
+      "color": "1d76db",
+      "description": "Three.js scenes, models and the globe",
+      "claude": true
+    },
+    {
+      "name": "area:ui",
+      "color": "1d76db",
+      "description": "Sections, components and layout",
+      "claude": true
+    },
+    {
+      "name": "area:build",
+      "color": "1d76db",
+      "description": "Vite, prerender and deploy scripts",
+      "claude": true
+    },
+    {
+      "name": "area:docs",
+      "color": "1d76db",
+      "description": "README and repository documentation",
+      "claude": true
+    },
+    {
+      "name": "area:ci",
+      "color": "1d76db",
+      "description": "Workflows and tooling",
+      "claude": true
+    }
+  ]
+}
