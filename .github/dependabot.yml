@@ -1,9 +1,13 @@
+# Friday morning, so the weekly upkeep run on Saturday sees the checks and lists them.
 version: 2
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
+      day: friday
+      time: "06:00"
+      timezone: Europe/London
     open-pull-requests-limit: 5
     groups:
       react:
@@ -32,3 +36,6 @@ updates:
     directory: /
     schedule:
       interval: weekly
+      day: friday
+      time: "06:00"
+      timezone: Europe/London
